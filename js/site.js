@@ -664,20 +664,20 @@
 
         for (var i = 0; i < material_inputs.length; i++) {
             if ($(material_inputs[i]).val())
-                $(material_inputs[i]).parent('.input-field').addClass('used');
+                $(material_inputs[i]).parent('.input-field').addClass('_used');
             else
-                $(material_inputs[i]).parent('.input-field').removeClass('used');
+                $(material_inputs[i]).parent('.input-field').removeClass('_used');
         }
 
         material_inputs.on('blur', function () {
             if ($(this).val())
-                $(this).parent().addClass('used');
+                $(this).parent().addClass('_used');
             else
-                $(this).parent().removeClass('used');
+                $(this).parent().removeClass('_used');
         });
 
         material_inputs.on('focus', function () {
-            $(this).parent().addClass('used');
+            $(this).parent().addClass('_used');
         });
 		
 		/** Ripple:
