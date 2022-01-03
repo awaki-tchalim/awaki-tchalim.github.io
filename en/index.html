@@ -1310,7 +1310,7 @@
                             this.dataForm.zip='';
                             this.dataForm.subject='';  
                             this.errors.clear();
-    
+                            this.$validator.reset();
                         this.openNotification('top-right', 'success', `<i class='fa fa-check-circle' ></i>`);  
                         }else{
                         this.openerrorNotification('top-right', 'danger', `<i class='fa fa-exclamation-triangle' ></i>`);  
