@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-color-07cb79 theme-skin-light">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Développeur sénior Full Stack & infographiste">
+    <title>Awaki TCHALIM - Développeur sénior Full Stack</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="img/favicon.png"/>
+
+  
+    <!-- Google Fonts -->
+   <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" type="text/css" href="fonts/map-icons/css/map-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/icomoon/style.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.theme.css">
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.mediaelement/mediaelementplayer.min.css">
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.bxslider/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic">
+    <link rel="stylesheet" type="text/css" href="colors/green.css">
+
+    <!-- Modernizer for detect what features the user’s browser has to offer -->
+    <script async defer src="js/libs/modernizr.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11MG5XZ2KV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-11MG5XZ2KV');
+    </script>
+
+    <link href="https://unpkg.com/vuesax@4.0.1-alpha.16/dist/vuesax.min.css" rel="stylesheet">
+
+</head>
+
+<body class="home header-has-img loading"> 
+    <div  id="app"> 
+        <div class="mobile-nav">
+            <button class="btn-mobile mobile-nav-close"><i class="rsicon rsicon-close"></i></button>
+        
+            <div class="mobile-nav-inner">
+                <nav id="mobile-nav" class="nav">
+                    <ul class="clearfix">
+                        <li><a href="#about">Qui suis-je ?</a></li>
+                        <li><a href="#skills">Compétence</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#experience">Expérience</a></li> 
+                        <li><a href="#contact">Contact <span></span></a></li>
+                        <li><a href="/en"><img style="width:20px" src="../img/lang/Flag_of_the_United_Kingdom.svg" alt=""/> En</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- .mobile-nav -->
+    
+        <div class="sidebar sidebar-fixed">
+            <button class="btn-sidebar btn-sidebar-close"><i class="rsicon rsicon-close"></i></button>
+        
+            <div class="widget-area">
+                <aside class="widget widget-profile">
+                    <div class="profile-photo">
+                        <img src="img/uploads/photo-v2-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="Awaki TCHALIM"/>
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="profile-title">Awaki TCHALIM</h2>
+        
+                        <h3 class="profile-position">Développeur sénior Full Stack</h3>
+                    </div>
+                </aside> 
+        
+                <aside class="widget widget_contact">
+                    <h2 class="widget-title">Contactez moi</h2>
+                    <form class="rsForm" ref="contact_me">
+                        <div :class="{'input-field': true, 'input-field error': errors.has('nom') }">
+                            <label>Nom</label>
+                            <input type="text" v-model="dataForm.nom" id="nom" v-validate="'required'" name="nom" value="">
+                            <span class="line"></span>
+                            <span v-show="errors.has('nom')" class="text-danger">Votre nom est requis</span>
+                        </div>
+
+                        <div :class="{'input-field': true, 'input-field error': errors.has('email') }">
+                            <label>E-mail</label>
+                            <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
+                            <span class="line"></span>
+                            <span v-show="errors.has('email')" class="text-danger">Vueillez saisir une adresse email valide</span>
+                        </div>
+
+                        <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
+                            <label>Téléphone</label>
+                            <input type="text" v-model="dataForm.tel" id="tel" name="tel" value="">
+                            <span class="line"></span>
+                        </div>
+
+                        <div :class="{'input-field': true, 'input-field error': errors.has('subject') }">
+                            <label>Sujet</label>
+                            <input type="text" v-model="dataForm.subject" id="subject" name="subject" value="">
+                            <span class="line"></span>
+                        </div>
+
+                        <div :class="{'input-field': true, 'input-field error': errors.has('message') }">
+                            <label>Message</label>
+                            <textarea rows="4" v-model="dataForm.message" id="message" v-validate="'required'" name="message"></textarea>
+                            <span class="line"></span>
+                            <span v-show="errors.has('message')" class="text-danger">Veuillez laisser votre message s'il vous plaît</span>
+                        </div> 
+
+                        <span class="btn-outer btn-primary-outer ripple">
+                            <input @click.prevent="validateBeforeSubmit('Contact')" class="btn btn-lg btn-primary" type="submit" value="Envoyer">
+                        </span>
+                    </form>
+                </aside>
+                <!-- .widget_contact -->
+        
+            </div>
+            <!-- .widget-area -->
+        </div>
+        <!-- .sidebar -->
+
+
+        <div class="wrapper">
+            <header class="header">
+                <div class="head-bg" style="background-image: url('img/uploads/rs-cover-awaki-tchalim-full-stack-developper-togo-africa.jpg')"></div>
+            
+                <div class="head-bar">
+                    <div class="head-bar-inner">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-6">
+                                <!--a class="logo" href="index.html"><span>RS</span>card</a -->
+                                <a class="head-logo" href=""
+                                ><img style=" width: 120px;" src="img/logo-awaki-tchalim-full-stack-developper-togo-africa.png" alt="aWaki"/></a>
+                                <a class="head-logo no-sticky-logo" href=""
+                                ><img style=" width: 120px;" src="img/logo-white-awaki-tchalim-full-stack-developper-togo-africa.png" alt="aWaki"/></a>
+                            </div>
+            
+                            <div class="col-sm-9 col-xs-6">
+                                <div class="nav-wrap">
+                                    <nav id="nav" class="nav">
+                                        <ul class="clearfix">
+                                            <li><a href="#about">Qui suis-je ?</a></li>
+                                            <li><a href="#skills">Compétences</a></li>
+                                            <li><a href="#portfolio">Portfolio</a></li>
+                                            <li><a href="#experience">Expérience</a></li> 
+                                            <li><a href="#contact">Contact <span></span></a></li>
+                                            <li><a href="/en"><img style="width:20px" src="../img/lang/Flag_of_the_United_Kingdom.svg" alt=""/> En</a></li>
+                                        </ul>
+                                    </nav>
+            
+                                    <button class="btn-mobile btn-mobile-nav">Menu</button>
+                                    <button class="btn-sidebar btn-sidebar-open"><i class="rsicon rsicon-menu"></i></button>
+                                </div>
+                                <!-- .nav-wrap -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- .header -->
+            
+            <div class="content">
+                <div class="container">
+        
+                <!-- START: PAGE CONTENT -->
+                <section id="about" class="section section-about">
+                    <div class="animate-up">
+                        <div class="section-box">
+                            <div class="profile">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <div class="profile-photo"><img src="img/uploads/photo-v1-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="Awaki TCHALIM"/></div>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div class="profile-info">
+                                            <div class="profile-preword"><span>Hello !</span></div>
+                                            <h1 class="profile-title"><span>Je suis</span> Awaki TCHALIM</h1>
+                
+                                            <h2 class="profile-position">Développeur sénior Full Stack</h2></div>
+                                        <ul class="profile-list">
+                                            <li class="clearfix">
+                                                <strong class="title">Age</strong>
+                                                <span class="cont">29</span>
+                                            </li>
+                                            <li class="clearfix">
+                                                <strong class="title">Adresse</strong>
+                                                <span class="cont">Tosi, Lomé, Togo</span>
+                                            </li>
+                                            <li class="clearfix">
+                                                <strong class="title">E-mail</strong>
+                                                <span class="cont"><a href="mailto:awaki.tchalim@gmail.com">awaki.tchalim@gmail.com</a></span>
+                                            </li>
+                                            <li class="clearfix">
+                                                <strong class="title">Téléphone</strong>
+                                                <span class="cont"><a href="tel:+22891412505">+228 91 41 25 05</a></span>
+                                            </li> 
+                                            <li class="clearfix">
+                                                <strong class="title">Langues</strong>
+                                                <span class="cont"><a href="/">Français</a>, <a href="/en">Anglais</a></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-social">
+                                <ul class="social">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                
+                        <div class="section-txt-btn">
+                            <p><a class="btn btn-lg btn-border ripple" target="_blank"
+                                href="documents/curriculum-vitae-tchalim-awaki-developpeur-full-stack.pdf">Télécharger mon CV</a></p>
+                
+                            <p class="text-justify">
+                                Salut ! Je suis Awaki TCHALIM. <strong>Développeur senior full stack</strong> (front-end et back-end). Depuis plus de 08 ans, j’ai mis ma curiosité et ma créativité au service du
+    monde informatique. Durant cette période j'ai travaillé dans différents
+    environnements, des grandes sociétés aux start-up. Je suis un professionnel
+    pluridisciplinaire, motivé et autodidacte qui aime résoudre des problèmes.
+    Créatif, expérimenté dans chaque étape du cycle de développement de
+    projets Web, je fusionne une passion pour la convivialité et l'expérience
+    utilisateur avec des connaissances techniques pour créer des expériences
+    numériques sympas.<br><br>
+    D'un naturel dynamique, sociable et joyeux, j'aspire à rejoindre une équipe
+    enrichissante et de porter avec elle des projets motivants !
+    </p>
+                        </div>
+                    </div>
+                </section>
+                <!-- #about -->
+
+                <section id="skills" class="section section-skills">
+                    <div class="animate-up">
+                        <h2 class="section-title">Compétences professionnelles</h2>
+                
+                        <div class="section-box">
+                            <h2 class="text-center widget-title">Développeur sénior Full Stack</h2>
+
+                            <div class="row" style="margin-bottom: 25px;">  
+
+                                <div class="col-md-4">  
+                                        <article class="post-box animate-up" style="margin-bottom: 25px;background-image:url('img/uploads/thumb-449x286-4-awaki-tchalim-full-stack-developper-togo-africa.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;">  
+                                            <div class="post-data"> 
+
+                                                <h3 class="post-title" style="color: white;">
+                                                    Développement web & administration système
+                                                </h3> 
+
+                                                <div class="post-tag">
+                                                    <a>#Sites</a>
+                                                    <a>#Applications</a>
+                                                    <a>#Ecommerce</a> 
+                                                    <a>#windows server</a> 
+                                                    <a>#serveur linux</a> 
+                                                </div>
+
+                                            </div>
+                                        </article> 
+                                </div>
+
+                                <div class="col-md-4">
+                                    <article class="post-box animate-up" style="margin-bottom: 25px;background-image:url('img/uploads/thumb-449x286-3-awaki-tchalim-full-stack-developper-togo-africa.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;">  
+                                        <div class="post-data"> 
+
+                                            <h3 class="post-title" style="color: white;">
+                                                Développement mobile et windows
+                                            </h3> 
+
+                                            <div class="post-tag"> 
+                                                <a>#Applications mobile androide & ios</a>
+                                                <a>#Logiciels windows</a> 
+                                            </div>
+
+                                        </div>
+                                    </article> 
+                                </div>
+
+                                <div class="col-md-4">
+                                    <article class="post-box animate-up" style="margin-bottom: 25px;background-image:url('img/uploads/thumb-449x286-2-awaki-tchalim-full-stack-developper-togo-africa.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;">  
+
+                                        <div class="post-data"> 
+
+                                            <h3 class="post-title" style="color: white;">
+                                                Communication visuelle et digitale
+                                            </h3> 
+
+                                            <div class="post-tag">
+                                                <a>#Infographie</a>
+                                                <a>#Social médias</a>
+                                                <a>#SOE, Ads</a> 
+                                            </div>
+
+                                        </div>
+                                    </article> 
+                                </div>
+
+                            </div>
+
+                            <div class="back-end"> 
+                                <h3>Back-end</h3>
+                                <div class="row"> 
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">PHP & MYSQL</span>
+                                                <span class="bar-value">90%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="90%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">LARAVEL (Framework php)</span>
+                                                <span class="bar-value">90%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="90%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">SLIM (Framework PHP)</span>
+                                                <span class="bar-value">100%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="100%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="front-end"> 
+                                <h3>Front-end</h3>
+                                <div class="row"> 
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">HTML5, CSS3</span>
+                                                <span class="bar-value">85%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="85%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">JAVASCRIT</span>
+                                                <span class="bar-value">87%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="90%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">VUE JS</span>
+                                                <span class="bar-value">90%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="92%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">REACT JS</span>
+                                                <span class="bar-value">45%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="45%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">SASS,LESS</span>
+                                                <span class="bar-value">60%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="60%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-sm-4">
+                                        <div class="progress-bar">
+                                            <div class="bar-data">
+                                                <span class="bar-title">Tweeter Bootstrap</span>
+                                                <span class="bar-value">85%</span>
+                                            </div>
+                                            <div class="bar-line">
+                                                <span class="bar-fill" data-width="85%"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class=""> 
+                                <div class="row"> 
+                                    <div class="front-end col-md-8"> 
+                                        <h3>CMS</h3>
+                                        <div class="row"> 
+                                            <div class="col-sm-6">
+                                                <div class="progress-bar">
+                                                    <div class="bar-data">
+                                                        <span class="bar-title">WORDPRESS</span>
+                                                        <span class="bar-value">90%</span>
+                                                    </div>
+                                                    <div class="bar-line">
+                                                        <span class="bar-fill" data-width="90%"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="progress-bar">
+                                                    <div class="bar-data">
+                                                        <span class="bar-title">DUPRAL 8</span>
+                                                        <span class="bar-value">60%</span>
+                                                    </div>
+                                                    <div class="bar-line">
+                                                        <span class="bar-fill" data-width="60%"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="front-end col-md-4">
+                                        <h3>MOBILE</h3>
+                                        <div class=""> 
+                                            <div class="progress-bar">
+                                                <div class="bar-data">
+                                                    <span class="bar-title">FLUTTER / DART</span>
+                                                    <span class="bar-value">40%</span>
+                                                </div>
+                                                <div class="bar-line">
+                                                    <span class="bar-fill" data-width="40%"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+
+
+                            <div class="front-end widget widget_tag_cloud text-center">
+                                <div class="tagcloud">
+                                    <a title="REST APIS">REST APIS</a>
+                                    <a title="GOOGLE APIS">GOOGLE APIS</a>
+                                    <a title="GIT">GIT</a>
+                                    <a title="YARN, NPM">YARN, NPM</a>
+                                    <a title="COMPUSER">COMPUSER</a>
+                                    <a title="SLACK, TRELLO">SLACK, TRELLO</a>
+                                    <a title="Administration système">APACH, NGINX</a>
+                                    <a title="Administration système">WHM - CPANEL, PLESK</a>
+                                    <a title="Infographie">ADOBE PHOTOSHOP, ILLUSTRATOR, 
+                                        INDESIGN</a>
+                                    <a title="Audio-visuel">AFTER EFFECT, PREMIERE PRO</a>
+                                </div>
+                            </div>
+                                
+
+                        </div>
+                    </div>
+                </section>
+                <!-- #skills -->
+                
+                <section id="portfolio" class="section section-portfolio">
+                <div class="animate-up">
+                <h2 class="section-title">Portfolio</h2>
+                
+                <div class="filter">
+                    <div class="filter-inner">
+                        <div class="filter-btn-group">
+                            <button data-filter="*">Tout</button>
+                            <button data-filter=".web">Web</button>
+                            <button data-filter=".mobile">Desktop & Mobile</button>
+                        </div>
+                        <div class="filter-bar">
+                            <span class="filter-bar-line"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                
+                    <div class="grid-item size22 web">
+                        <div class="grid-box">
+                            <figure class="portfolio-figure">
+                                <img src="img/uploads/portfolio/gsapp-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
+                                <figcaption class="portfolio-caption">
+                                    <div class="portfolio-caption-inner">
+                                        <h3 class="portfolio-title">GSAPP</h3>
+                                        <h4 class="portfolio-cat">Application de gestion de secours d'urgence</h4>
+                
+                                        <div class="btn-group">
+                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox1"
+                                            href="#portfolio1-inline1"><i class="rsicon rsicon-eye"></i></a>
+                                        
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                
+                            <!-- Start: Portfolio Inline Boxes -->
+                            <div id="portfolio1-inline1" class="fancybox-inline-box">
+                                <div class="inline-embed" data-embed-type="image"
+                                    data-embed-url="img/uploads/portfolio/gsapp_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                <div class="inline-cont">
+                                    <h2 class="inline-title">GSAPP, l'application de gestion de secours d'urgence</h2>
+                
+                                    <div class="inline-text">
+                                        <p>Actuelement en utilisation par les sociétés Togo Assistance (Togo) et Guinee secours (Guinee Conakry)
+                                            GSAPP développé avec le framework php Laravel en back-end et le framework javascript vue js en front-end, 
+                                            est un outils complet de gestion d'assistance en cas d'urgence ( Gestion des abonnés, des personnes à prevenir, 
+                                            localisation et gestion des sinistres, prise en charge des évacuations, suivie des soucriptions etc...)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- End: Portfolio Inline Boxes -->
+                        </div>
+                    </div>
+                    <!-- .grid-item -->
+                
+                    <div class="grid-item size11 web">
+                        <div class="grid-box">
+                            <figure class="portfolio-figure">
+                                <img src="img/uploads/portfolio/caliente-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
+                                <figcaption class="portfolio-caption">
+                                    <div class="portfolio-caption-inner">
+                                        <h3 class="portfolio-title">Caliente Togo</h3>
+                                        <h4 class="portfolio-cat">Site Officiel</h4>
+                
+                                        <div class="btn-group">
+                                            <a class="btn-link" href="http://calientetogo.com" target="_blank"><i
+                                                    class="rsicon rsicon-link"></i></a>
+                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox2"
+                                            href="#portfolio2-inline1"><i class="rsicon rsicon-eye"></i></a>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                
+                            <!-- Start: Portfolio Inline Boxes -->
+                            <div id="portfolio2-inline1" class="fancybox-inline-box">
+
+                                <div class="inline-embed" data-embed-type="image"
+                                    data-embed-url="img/uploads/portfolio/caliente_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                <div class="inline-cont">
+                                    <div class="inline-text">
+                                        <h2 class="inline-title">Caliente Togo</h2>
+                
+                                        <p>CALIENTE est un Méga événement grand public qui se déroule à la colombe de la Paix de Lomé chaque 31 Décembre et passe sur la TVT en direct. La vision du promoteur est de faire la promotion de la culture et de l’art du Togo dans le monde entier et faire du Togo un centre d’intérêt pour les touristes en fin d’année. Le projet est conçu sur deux bases essentielles:
+                                            1-”Faire de Lomé la Capitale Africaine du réveillon “
+                                            2-”Togo, le sourire de l’Afrique.”</p>
+                                    </div>
+                                </div> 
+
+                            </div>
+                            <!-- End: Portfolio Inline Boxes -->
+                        </div>
+                    </div>
+                    <!-- .grid-item -->
+                
+                    <div class="grid-item size11 web">
+                        <div class="grid-box">
+                            <figure class="portfolio-figure">
+                                <img src="img/uploads/portfolio/arm-digital-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
+                                <figcaption class="portfolio-caption">
+                                    <div class="portfolio-caption-inner">
+                                        <h3 class="portfolio-title">ARM DIGITAL MARKETING</h3>
+                                        <h4 class="portfolio-cat">Site officiel</h4>
+                
+                                        <div class="btn-group">
+                                            <a class="btn-link" href="https://armdigitalmarketing.com" target="_blank"><i
+                                                    class="rsicon rsicon-link"></i></a>
+                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox3"
+                                            href="#portfolio3-inline1"><i class="rsicon rsicon-eye"></i></a>
+                                            <a class="portfolioFancybox hidden" data-fancybox-group="portfolioFancybox3"
+                                            href="#portfolio3-inline2"></a> 
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                
+                            <!-- Start: Portfolio Inline Boxes -->
+                            <div id="portfolio3-inline1" class="fancybox-inline-box">
+                                <div class="inline-embed" data-embed-type="image"
+                                    data-embed-url="img/uploads/portfolio/arm-digital_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                <div class="inline-cont">
+                                    <div class="inline-text">
+                                        <h2 class="inline-title">ARM DIGITAL MARKETING</h2>
+                
+                                        <p>ARM Digital est une agence de marketing digital basée en France, île Maurice, Togo et Cameroun.</p>
+                                    </div>
+                                </div> 
+                            </div> 
+                            <!-- End: Portfolio Inline Boxes -->
+                        </div>
+                    </div>
+                    <!-- .grid-item -->
+    
+
+
+
+                    <div class="grid-item size11 web">
+                        <div class="grid-box">
+                            <figure class="portfolio-figure">
+                                <img src="img/uploads/portfolio/talkag-home-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
+                                <figcaption class="portfolio-caption">
+                                    <div class="portfolio-caption-inner">
+                                        <h3 class="portfolio-title">TalkAg.com</h3>
+                                        <h4 class="portfolio-cat">Réseau social agricole</h4>
+                    
+                                        <div class="btn-group">
+                                            <a class="btn-link" href="http://talkag.com/home" target="_blank"><i
+                                                    class="rsicon rsicon-link"></i></a>
+                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox2"
+                                            href="#portfolio4-inline1"><i class="rsicon rsicon-eye"></i></a>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                    
+                            <!-- Start: Portfolio Inline Boxes -->
+                            <div id="portfolio4-inline1" class="fancybox-inline-box">
+                                <div class="inline-embed" data-embed-type="image"
+                                    data-embed-url="img/uploads/portfolio/talkag-home_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                <div class="inline-cont">
+                                    <h2 class="inline-title">TalkAg.com</h2>
+                                    <div class="inline-text">
+                                        <p>Au service des agriculteurs et des professionnels de l’Agriculture, La plateforme TALK AG est un réseau social personnalisé qui favorise 
+                                            L’échange, le partage et la transmission des savoirs et des techniques agricoles. 
+                                            </p>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- End: Portfolio Inline Boxes -->
+                        </div>
+                    </div><!-- .grid-item -->
+
+
+                    <div class="grid-item size11 web">
+                        <div class="grid-box">
+                            <figure class="portfolio-figure">
+                                <img src="img/uploads/portfolio/soycain-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
+                                <figcaption class="portfolio-caption">
+                                    <div class="portfolio-caption-inner">
+                                        <h3 class="portfolio-title">SOYCAIN</h3>
+                                        <h4 class="portfolio-cat">Site officiel</h4>
+                    
+                                        <div class="btn-group">
+                                            <a class="btn-link" href="http://soycain.com" target="_blank"><i
+                                                    class="rsicon rsicon-link"></i></a>
+                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox5"
+                                                href="#portfolio5-inline1"><i class="rsicon rsicon-eye"></i></a> 
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                    
+                            <!-- Start: Portfolio Inline Boxes -->
+                            <div id="portfolio5-inline1" class="fancybox-inline-box">
+                                    <div class="inline-embed" data-embed-type="image" data-embed-url="img/uploads/portfolio/soycain_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                    <div class="inline-cont">
+                                        <h2 class="inline-title">SOYCAIN</h2>
+                                        <div class="inline-text">
+                                            <p>Soycain est une société anonyme spécialisé dans la production et la commercialisation de produits conventionnels et biologiques sans OGM.
+                                                </p>
+                                        </div>
+                                    </div>
+                            </div>
+                    
+                            <!-- End: Portfolio Inline Boxes -->
+                        </div>
+                    </div><!-- .grid-item -->
+
+
+
+                    
+
+
+
+                        <div class="grid-item size11 mobile web">
+                            <div class="grid-box">
+                                <figure class="portfolio-figure">
+                                    <img src="img/uploads/portfolio/tidyd-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
+                                    <figcaption class="portfolio-caption">
+                                        <div class="portfolio-caption-inner">
+                                            <h3 class="portfolio-title">Tidyd Home organizer</h3>
+                                            <h4 class="portfolio-cat">Site de présentation</h4>
+
+                                            <div class="btn-group">
+                                                <a class="btn-link" href="https://tidyd.fr" target="_blank"><i
+                                                        class="rsicon rsicon-link"></i></a>
+                                                <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox6"
+                                                    href="#portfolio6-inline2"><i class="rsicon rsicon-eye"></i></a> 
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+
+                                <!-- Start: Portfolio Inline Boxes -->
+                                <div id="portfolio6-inline2" class="fancybox-inline-box">
+                                    <div class="inline-embed" data-embed-type="image" data-embed-url="img/uploads/portfolio/tidyd_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
+                                        <div class="inline-cont">
+                                            <h2 class="inline-title">Tidyd Home organizer</h2>
+                                            <div class="inline-text">
+                                                <p>TidyD – l’app pour organiser et gérer vos possessions
+                                                    TidyD vous simplifie le rangement et vous permet de donner une 2ème vie à vos objets un seulement 1 clic.</p>
+                                            </div>
+                                        </div> 
+
+                                </div>
+                                <!-- End: Portfolio Inline Boxes -->
+                            </div>
+                        </div><!-- .grid-item -->
+
+
+
+
+                </div>
+                
+                <div class="grid-more">
+                    <span class="ajax-loader"></span>
+                    <button class="btn btn-border ripple"><i class="rsicon rsicon-add"></i></button>
+                </div>
+                </div>
+                </section>
+                <!-- #portfolio -->
+
+
+
+
+
+
+
+
+
+
+                
+                <section id="experience" class="section section-experience">
+                    <div class="animate-up">
+                        <h2 class="section-title">Expérience professionnelle</h2>
+                
+                        <div class="timeline">
+                            <div class="timeline-bar"></div>
+                            <div class="timeline-inner clearfix">
+                                <div class="timeline-box timeline-box-left">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-right">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date">DEPUIS AOÛT 2019</div>
+                                        <h3>SOYCAIN SA</h3>
+                                        <h4>Développeur Sénior Full Stack</h4>
+                
+                                        <p style="text-align: justify;">Soycain est le leader du Bio de la sous région.
+                                            Mon objectif est de travailler sur des tâches front-end, back-end et infographiques à la demande du responsable informatique 
+                                            et du Directeur Général conformément aux exigences des cahiers des charges technique, aux prototypes et aux recommandations.
+                                        
+                                            <ul>
+                                                <li>Utiliser mon expérience en développement front-end et back-end 
+                                                    pour définir les ressources, la structure et les composants des projets
+                                                </li><br>
+                                                <li>Créer ou personnaliser des thèmes et plugins Wordpress.</li><br>
+                                                <li>Je m'assure de la réussite de l'aspect visuel et technique des projets,
+                                                    Coacher et assister les développeurs juniors, préserver une bonne qualité du code en examinant le code et en suggérant ou demandant des améliorations
+                                                </li><br>
+                                                <li>Assistance technique au recrutement des développeurs</li><br>
+                                                <li>Infographie dans le respect des chartes graphiques</li><br>
+                                            </ul>
+
+                                        </p> 
+
+                                        <div class="widget widget_tag_cloud text-center">
+                                            <div class="tagcloud">
+                                                <a title="GIT">GIT, COMPUSER</a>
+                                                <a title="Back-end">MYSQL, PHP, LARAVEL</a>
+                                                <a title="Back-end">SLIM FRAMEWORK</a>
+                                                <a title="APIREST">APIREST</a>
+                                                <a title="Front-end">VUE JS, bootstrap</a>
+                                                <a title="CMS">WORDPRESS</a>
+                                                <a title="Outils">SLACK, TRELLO</a>
+                                                <a title="Infographie">PHOTOSHOP, INDESIGN</a>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-right">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-left">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date">DEPUIS MARS 2019</div>
+                                        <h3>ARM Mauritius (île Maurice)</h3>
+                                        <h4>Consultant Développeur / Dev Lead <br><em>(Télétravail / temps partiel)</em></h4>
+                
+                                        <p style="text-align: justify;">ARM MAURITIUS est une agence digitale basée à Port Louis (Mauritius) spécialisée dans le
+                                            community management et le développement web.
+                                            Quotidiennement, je travaille sur la refonte de site web WordPress ou sur la création de sites vitrines ou dynamiques aux différents clients.
+                                        
+                                            <ul>
+                                                <li>Développement WordPress, y compris création ou personnalisation
+                                                    de thèmes, développement de plugins personnalisés et formation.
+                                                </li><br>
+                                                <li>Administration système (Configuration et optimisation VPS (Apache
+                                                    & Nginx)</li><br>
+                                                <li>Optimisation SEO</li><br>
+                                                <li>Conception, développement et mise en place de campagnes d'e-
+                                                    mail marketing</li><br>
+                                            </ul>
+
+                                        </p> 
+
+                                        <div class="widget widget_tag_cloud text-center">
+                                            <div class="tagcloud">
+                                                <a title="Back-end">MYSQL, PHP</a>
+                                                <a title="APIREST">APIREST</a>
+                                                <a title="Front-end">VUE JS, bootstrap</a>
+                                                <a title="CMS">WORDPRESS</a>
+                                                <a title="Outils">TRELLO</a>
+                                                <a title="Administrations système">WHM-CPANEL, PLESK, apache2, IIS10</a>
+                                                <a title="GIT">GIT</a>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-left">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-right">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date">2015 - 2019</div>
+                                        <h3>UNICOM AFRICA</h3>
+                                        <h4>Chef créa, multimedia et web</h4>
+                
+                                        <p style="text-align: justify;">Maintenance informatique et réseau, développement web, communication visuelle et digitale, Leadership
+                                        
+                                            <ul>
+                                                <li>Création de sites vitrines
+                                                </li><br>
+                                                <li>Développement d’interface utilisateur</li><br>
+                                                <li>Optimisation SEO</li><br>
+                                                <li>Développement back-end avec php</li><br>
+                                                <li>Administration système</li><br>
+                                                <li>Communication visuelle (conceptions infographiques et suivis
+                                                    d’impression d’affiches publicitaires, de jingles, de catalogues, de dossier
+                                                    projet, d’agenda, bloc-notes, des étrennes de fin d'année etc...).</li><br>
+                                            </ul>
+
+                                        </p> 
+
+                                        <div class="widget widget_tag_cloud text-center">
+                                            <div class="tagcloud">
+                                                <a title="Back-end">MYSQL, PHP</a>
+                                                <a title="Front-end">Html, css, javascript</a>
+                                                <a title="front-end">Bootstrap</a>
+                                                <a title="CMS">WORDPRESS</a>
+                                                <a title="VPS Administration">Google cloud plateforme</a>
+                                                <a title="Audio-visuel">After effect, Première Pro</a>
+                                                <a title="Infographie">Photoshop, Illustrator, Indesign</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-right">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-left">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date">Depuis Août 2016</div>
+                                        <h3>Comité d'organisation Caliente</h3>
+                                        <h4>Webmaster / Technicien audio-visuel <em>(Freelance)</em></h4>
+                
+                                        <p>Développement web, gestions des ressources informatiques, production des supports de communication visuelle</p>
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-right">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-left">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date">2012 - 2015</div>
+                                        <h3>KING MENSAH COMMUNICATION</h3>
+                                        <h4>Responsable Créa</h4>
+                
+                                        <p style="text-align: justify;">Maintenance informatique et réseau, développement web et windows,
+                                            communication digitale et print.
+                                        
+                                            <ul>
+                                                <li>Développement d’application Windows de gestion avec java (Java
+                                                    Desktop application)
+                                                </li><br>
+                                                <li>Maintenance du site web de l’artiste King Mensah</li><br>
+                                                <li>Gestion des réseaux sociaux de l’artiste</li><br>
+                                                <li>Création et mise à jour de sites web statiques avec du html, css et
+                                                    javacript</li><br>
+                                                <li>Communication visuelle <em>(conceptions infographiques et impression).</em></li>
+                                            </ul>
+
+                                        </p> 
+
+                                        <div class="widget widget_tag_cloud text-center">
+                                            <div class="tagcloud">
+                                                <a title="Front-end">Html, css, javascript</a>
+                                                <a title="CMS">WORDPRESS</a>
+                                                <a title="Audio-visuel">After effect, Première Pro</a>
+                                                <a title="Infographie">Photoshop, Illustrator, Indesign</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- #experience -->
+                
+                <section id="education" class="section section-education">
+                    <div class="animate-up">
+                        <h2 class="section-title">Education</h2>
+                
+                        <div class="timeline">
+                            <div class="timeline-bar"></div>
+                            <div class="timeline-inner clearfix"> 
+                                <div class="timeline-box timeline-box-compact timeline-box-right">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-left">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date"><span>2014 - 2015</span></div>
+                                        <h3>Formation en Audio-visuel</h3>
+                                        <h4>Visual communication</h4>
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-compact timeline-box-left">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-right">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date"><span>2013 - 2014</span></div>
+                                        <h3>Licence professionnelle en Gestion informatique et réseau</h3>
+                                        <h4>DEFITECH</h4>
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-compact timeline-box-right">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-left">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date"><span>2011 - 2013</span></div>
+                                        <h3>BTS en Informatique de gestion option Développement d'applications</h3>
+                                        <h4>DEFITECH</h4>
+                                    </div>
+                                </div>
+                
+                                <div class="timeline-box timeline-box-compact timeline-box-left">
+                                    <span class="dot"></span>
+                
+                                    <div class="timeline-box-inner animate-right">
+                                        <span class="arrow"></span>
+                
+                                        <div class="date"><span>2010 - 2011</span></div>
+                                        <h3>Première année FDS (SCIENCES NATURELLES)</h3>
+                                        <h4>Université de Lomé</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                
+                <section id="interests" class="section section-interests">
+                    <div class="animate-up">
+                        <h2 class="section-title">Ce dont je suis fier</h2>
+
+                        <div class="section-box" style="text-align:left!important">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3>Mon courage</h3>
+                                <p>De toujours quitter ma zone de confort, je n’ai aucune hésitation à faire tout ce qu’il faut pour atteindre mes objectifs.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <h3>Ma concentration et ma persévérance</h3>
+                                <p>En toute situation, difficile ou non, je
+                                    garde toujours mon calme et ma
+                                    concentration sur mes objectifs pour
+                                    avancer</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <h3>Ma créativité, ma polyvalence,
+                                    ma flexibilité et mon adaptabilité</h3>
+                                <p>A l'image du monde, de la technologie
+                                    et des marchés, je m'adapte
+                                    facilement à des environnements de
+                                    travail différents, des techniques de
+                                    travail en perpétuelle évolution et des
+                                    collaborateurs aux profils différents.</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- #interests -->
+                
+            
+                
+                <section id="contact" class="section section-contact">
+                    <div class="animate-up">
+                        <h2 class="section-title">Contactez moi</h2>
+                
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="section-box contact-form">
+                                    <h3>N'hésitez pas à m'écrire !</h3>
+                
+                                    <form class="rsForm" ref="contact_me">
+                                        <div :class="{'input-field': true, 'input-field error': errors.has('nom') }">
+                                            <label>Nom</label>
+                                            <input type="text" v-model="dataForm.nom" id="nom" v-validate="'required'" name="nom" value="">
+                                            <span class="line"></span>
+                                            <span v-show="errors.has('nom')" class="text-danger">Votre nom est requis</span>
+                                        </div>
+                
+                                        <div :class="{'input-field': true, 'input-field error': errors.has('email') }">
+                                            <label>E-mail</label>
+                                            <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
+                                            <span class="line"></span>
+                                            <span v-show="errors.has('email')" class="text-danger">Vueillez saisir une adresse email valide</span>
+                                        </div>
+                
+                                        <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
+                                            <label>Téléphone</label>
+                                            <input type="text" v-model="dataForm.tel" id="tel" name="tel" value="">
+                                            <span class="line"></span>
+                                        </div>
+                
+                                        <div :class="{'input-field': true, 'input-field error': errors.has('subject') }">
+                                            <label>Sujet</label>
+                                            <input type="text" v-model="dataForm.subject" id="subject" name="subject" value="">
+                                            <span class="line"></span>
+                                        </div>
+                
+                                        <div :class="{'input-field': true, 'input-field error': errors.has('message') }">
+                                            <label>Message</label>
+                                            <textarea rows="4" v-model="dataForm.message" id="message" v-validate="'required'" name="message"></textarea>
+                                            <span class="line"></span>
+                                            <span v-show="errors.has('message')" class="text-danger">Veuillez laisser votre message s'il vous plaît</span>
+                                        </div> 
+                
+                                        <span class="btn-outer btn-primary-outer ripple">
+                                            <input @click.prevent="validateBeforeSubmit('Contact')" class="btn btn-lg btn-primary" type="submit" value="Envoyer">
+                                        </span>
+                                    </form>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-6">
+                                <div class="section-box contact-info has-map">
+                                    <ul class="contact-list">
+                                        <li class="clearfix">
+                                            <strong>Adresse</strong>
+                                            <span>Totsi, Lomé, Togo</span>
+                                        </li>
+                                        <li class="clearfix">
+                                            <strong>Téléphone</strong>
+                                            <span><a href="tel:+22891412505">+228 91 41 25 05</a></span>
+                                        </li>
+                                        <li class="clearfix">
+                                            <strong>E-mail</strong>
+                                            <span><a href="mailto:awaki.tchalim@gmail.com">awaki.tchalim@gmail.com</a></span>
+                                        </li>
+                                    </ul>
+                
+                                    <div id="myhome">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5513946916376!2d1.185771714333216!3d6.190729795518242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102158f683b06c23%3A0xa42fa0074841b542!2sRue%2076%20TOT%2C%20Lom%C3%A9!5e0!3m2!1sfr!2stg!4v1605452379291!5m2!1sfr!2stg" allowfullscreen="" aria-hidden="false" tabindex="0" style="border:0;width:100%;height:100%"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- #contact -->
+                <!-- END: PAGE CONTENT -->
+        
+            </div>
+            <!-- .container -->
+        </div>
+        <!-- .content -->
+
+
+
+        <footer class="footer">
+            <div class="footer-social">
+                <ul class="social">
+                    <li><a class="ripple-centered" href="https://facebook.com/espoir.tchalim" target="_blank"><i class="rsicon rsicon-facebook"></i></a></li> 
+                    <li><a class="ripple-centered" href="https://www.linkedin.com/in/awaki-tchalim-230ba288/" target="_blank"><i class="rsicon rsicon-linkedin"></i></a></li> 
+                    <li><a class="ripple-centered" href="https://instagram.com/espoirtchalim" target="_blank"><i class="rsicon rsicon-instagram"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- .footer -->
+        
+        </div>
+        <!-- .wrapper -->
+    
+        <a class="btn-scroll-top" href="#"><i class="rsicon rsicon-arrow-up"></i></a>
+        <div id="overlay"></div>
+    </div>
+
+   <!-- <div id="overlay"></div>
+    <div id="preloader">
+        <div class="preload-icon"><span></span><span></span></div>
+        <div class="preload-text">Chargement ...</div>
+    </div>-->
+    
+    <!-- Scripts -->
+    
+
+     
+ 
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- vuesax Loading -->
+    <script src="https://unpkg.com/vuesax@4.0.1-alpha.16/dist/vuesax.min.js"></script>
+
+    <!-- axios https://github.com/axios/axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
+        integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
+        crossorigin="anonymous"></script>
+
+    <!-- include the VeeValidate library -->
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@<3.0.0/dist/vee-validate.js"></script>
+
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js"></script>
+    <script async defer src="js/plugins/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script async defer src="js/plugins/imagesloaded.pkgd.min.js"></script>
+    <script async defer src="js/plugins/isotope.pkgd.min.js"></script>
+    <script async defer src="js/plugins/jquery.appear.min.js"></script>
+    <script async defer src="js/plugins/jquery.onepagenav.min.js"></script>
+    
+    <script async defer src="js/plugins/jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script async defer src="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script async defer src="js/plugins/jquery.mediaelement/mediaelement-and-player.min.js"></script>
+    <script async defer src="js/plugins/jquery.fancybox/jquery.fancybox.pack.js"></script>
+    
+    <script async defer src="js/plugins/jquery.fancybox/helpers/jquery.fancybox-media.js"></script>
+    <script async defer src="js/plugins/jquery.owlcarousel/owl.carousel.min.js"></script>
+
+	<script async defer src="js/options.js"></script>
+    <script async defer src="js/site.js"></script>
+
+
+    <script>
+    Vue.use(VeeValidate); // good to go.  
+    var app = new Vue({
+        el: "#app",
+
+        data() {
+            return {
+                apiBase_url: 'https://awaki-tchalim.github.io/api/',
+                backgroundLoading:'primary',
+                colorLoading:'#fff',
+                secureicone:'sms',
+                first: true,
+                Loadingcolor: '#f18c21',
+                iti:'', 
+                active:'1',
+                loading:false,  
+                
+                dataForm: {
+                    nom:'',
+                    prenom:'',
+                    email:'',
+                    tel:'',
+                    message:'',
+                    link : window.location.href, 
+                    section:'',
+                    societe:'',
+                    type:'',
+                    zip:'',
+                    subject:'',
+                    body:'',
+                    token:'',
+                    therms:true
+                }, 
+                 
+            };
+
+        },
+
+        methods: { 
+            
+            openSubcriptionModal(section,color=null){
+                if(color!=null){
+                    $('#subscriptionBtn').css('background-color',color);
+                    $('#offerLabel').css('color',color);
+                }
+                this.dataForm.section = section
+                $('#offerSubcription').modal('show');
+            },
+
+            async validateBeforeSubmit(section,modalToClose=null) {
+                this.dataForm.section = section
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        this.postData(modalToClose);
+                        return;
+                    }
+                }); 
+            }, 
+
+            openLoadingButton() {
+                console.log(this.$refs.button.$el)
+                const loading = this.$vs.loading({
+                    target: this.$refs.button,
+                    scale: '0.6',
+                    background: 'primary',
+                    opacity: 1,
+                    color: '#fff'
+                })
+                setTimeout(() => {
+                    loading.close()
+                }, 3000)
+                },
+
+                openLoading() {
+                    const loading = this.$vs.loading({
+                        target: this.$refs.contact_me,
+                        color: '#E83B35'
+                    })
+                    setTimeout(() => {
+                        loading.close()
+                    }, 3000)
+                },
+
+
+
+            async postData(modalToClose=null) {
+                const loading = this.$vs.loading({
+                    target: this.$refs.contact_me,
+                    color: '#E83B35'
+                }) 
+                axios.post(this.apiBase_url+'process.php',this.dataForm)
+                .then(response =>{ 
+                    if(response.data.success){
+                     
+                        this.dataForm.nom='';
+                        this.dataForm.prenom='';
+                        this.dataForm.email='';
+                        this.dataForm.tel='';
+                        this.dataForm.message='';   
+                        this.dataForm.zip='';
+                        this.dataForm.subject='';  
+                        this.errors.clear();
+
+                    this.openNotification('top-right', 'success', `<i class='fa fa-check-circle' ></i>`);  
+                    }else{
+                    this.openerrorNotification('top-right', 'danger', `<i class='fa fa-exclamation-triangle' ></i>`);  
+                    } 
+                        if(modalToClose!=null){
+                            $('#'+modalToClose).modal('hide');
+                        }
+                    loading.close(); 
+                })
+                .catch(function(error){
+                    console.log(error);
+                    loading.close(); 
+                }); 
+            },  
+
+            openNotification(position = null, color, icon) {
+                const noti = this.$vs.notification({
+                    progress: 'auto',
+                    icon,
+                    color,
+                    position,
+                    title: 'Message envoyé !',
+                    text: `Merci pour votre message ! Je vous reviens dans les meilleurs délais.`
+                })
+            },
+           
+           
+            openerrorNotification(position = null, color, icon) {
+                const noti = this.$vs.notification({
+                    progress: 'auto',
+                    icon,
+                    color,
+                    position,
+                    title: "Oops ! une erreur s'est produite",
+                    text: `Votre demande n'a pas été traitée ! Je vous prie de bien vouloir réessayer.`
+                })
+            },
+
+        },
+
+    }); 
+
+</script>
+
+
+
+</body>
+</html>
