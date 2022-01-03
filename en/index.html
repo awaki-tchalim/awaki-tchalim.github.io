@@ -1215,7 +1215,7 @@
     
             data() {
                 return {
-                    apiBase_url: 'https://awaki-tchalim.github.io/api/',
+                    apiBase_url: 'https://api.reussirplus.com/',
                     backgroundLoading:'primary',
                     colorLoading:'#fff',
                     secureicone:'sms',
@@ -1298,7 +1298,7 @@
                         target: this.$refs.contact_me,
                         color: '#E83B35'
                     }) 
-                    axios.post(this.apiBase_url+'process.php',this.dataForm)
+                    axios.post(this.apiBase_url,this.dataForm)
                     .then(response =>{ 
                         if(response.data.success){
                          
