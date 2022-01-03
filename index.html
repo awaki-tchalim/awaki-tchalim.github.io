@@ -1310,8 +1310,9 @@
                         this.dataForm.tel='';
                         this.dataForm.message='';   
                         this.dataForm.zip='';
-                        this.dataForm.subject='';  
+                        this.dataForm.subject=''; 
                         this.errors.clear();
+                        this.$validator.reset();
 
                     this.openNotification('top-right', 'success', `<i class='fa fa-check-circle' ></i>`);  
                     }else{
