@@ -94,7 +94,7 @@
                             <label>E-mail</label>
                             <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
                             <span class="line"></span>
-                            <span v-show="errors.has('email')" class="text-danger">Vueillez saisir une adresse email valide</span>
+                            <span v-show="errors.has('email')" class="text-danger">Veuillez saisir une adresse email valide</span>
                         </div>
 
                         <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
@@ -1086,7 +1086,7 @@
                                             <label>E-mail</label>
                                             <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
                                             <span class="line"></span>
-                                            <span v-show="errors.has('email')" class="text-danger">Vueillez saisir une adresse email valide</span>
+                                            <span v-show="errors.has('email')" class="text-danger">Veuillez saisir une adresse email valide</span>
                                         </div>
                 
                                         <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
@@ -1141,6 +1141,7 @@
                     </div>
                 </section>
                 <!-- #contact -->
+
                 <!-- END: PAGE CONTENT -->
         
             </div>
@@ -1168,15 +1169,8 @@
         <div id="overlay"></div>
     </div>
 
-   <!-- <div id="overlay"></div>
-    <div id="preloader">
-        <div class="preload-icon"><span></span><span></span></div>
-        <div class="preload-text">Chargement ...</div>
-    </div>-->
     
     <!-- Scripts -->
-    
-
      
  
     <!-- Vue -->
