@@ -624,7 +624,7 @@ textarea {
 }
 
 .input-field label {
-    top: 10px;
+    top: -10px;
     left: 0;
     color: #333;
     font-size: 14px;
