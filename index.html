@@ -1,1472 +1,1034 @@
 <!DOCTYPE html>
-<html lang="fr" class="theme-color-07cb79 theme-skin-light">
+<html lang="en" data-lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Développeur sénior Full-stack & infographiste">
-    <title>Awaki TCHALIM - Développeur sénior Full-stack</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/ico" href="img/favicon.png"/>
-
-  
-    <!-- Google Fonts -->
-   <link rel="stylesheet" type="text/css" href="style.css">
-
-    <!-- Icon Fonts -->
-    <link rel="stylesheet" type="text/css" href="fonts/map-icons/css/map-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="fonts/icomoon/style.css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.theme.css">
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox/jquery.fancybox.css">
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.mediaelement/mediaelementplayer.min.css">
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="js/plugins/jquery.bxslider/jquery.bxslider.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic">
-    <link rel="stylesheet" type="text/css" href="colors/green.css">
-
-    <!-- Modernizer for detect what features the user’s browser has to offer -->
-    <script async defer src="js/libs/modernizr.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-11MG5XZ2KV"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-11MG5XZ2KV');
-    </script>
-
-    <link href="https://unpkg.com/vuesax@4.0.1-alpha.16/dist/vuesax.min.css" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awaki Tchalim — Senior Full-Stack Software Engineer</title>
+  <meta name="description"
+    content="Senior Full-Stack Software Engineer with 10+ years of experience. Expert in Laravel, Vue.js, Docker, REST APIs. Available for remote international opportunities." />
+  <meta name="keywords"
+    content="Awaki Tchalim, Full-Stack Developer, Laravel, Vue.js, PHP, Docker, SaaS, Togo, Remote Developer" />
+  <meta property="og:title" content="Awaki Tchalim — Senior Full-Stack Engineer" />
+  <meta property="og:description" content="10+ years building scalable SaaS platforms & enterprise web apps." />
+  <meta property="og:url" content="https://awaki.tchalim.dev" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.google.com/recaptcha/api.js?render=6LexYpksAAAAAHWYz41fg60p20yzY6bqvK6AxEjF"></script>
 </head>
 
-<body class="home header-has-img loading"> 
-    <div  id="app"> 
-        <div class="mobile-nav">
-            <button class="btn-mobile mobile-nav-close"><i class="rsicon rsicon-close"></i></button>
-        
-            <div class="mobile-nav-inner">
-                <nav id="mobile-nav" class="nav">
-                    <ul class="clearfix">
-                        <li><a href="#about">Qui suis-je ?</a></li>
-                        <li><a href="#skills">Compétence</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#experience">Expérience</a></li> 
-                        <li><a href="#contact">Contact <span></span></a></li>
-                        <li><a href="/en"><img style="width:20px" src="../img/lang/Flag_of_the_United_Kingdom.svg" alt=""/> En</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- .mobile-nav -->
-    
-        <div class="sidebar sidebar-fixed">
-            <button class="btn-sidebar btn-sidebar-close"><i class="rsicon rsicon-close"></i></button>
-        
-            <div class="widget-area">
-                <aside class="widget widget-profile">
-                    <div class="profile-photo">
-                        <img src="img/uploads/photo-v2-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="Awaki TCHALIM"/>
-                    </div>
-                    <div class="profile-info">
-                        <h2 class="profile-title">Awaki TCHALIM</h2>
-        
-                        <h3 class="profile-position">Développeur sénior Full-stack</h3>
-                    </div>
-                </aside> 
-        
-                <aside class="widget widget_contact">
-                    <h2 class="widget-title">Contactez moi</h2>
-                    <form class="rsForm" ref="contact_me">
-                        <div :class="{'input-field': true, 'input-field error': errors.has('nom') }">
-                            <label>Nom</label>
-                            <input type="text" v-model="dataForm.nom" id="nom" v-validate="'required'" name="nom" value="">
-                            <span class="line"></span>
-                            <span v-show="errors.has('nom')" class="text-danger">Votre nom est requis</span>
-                        </div>
-
-                        <div :class="{'input-field': true, 'input-field error': errors.has('email') }">
-                            <label>E-mail</label>
-                            <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
-                            <span class="line"></span>
-                            <span v-show="errors.has('email')" class="text-danger">Veuillez saisir une adresse email valide</span>
-                        </div>
-
-                        <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
-                            <label>Téléphone</label>
-                            <input type="text" v-model="dataForm.tel" id="tel" name="tel" value="">
-                            <span class="line"></span>
-                        </div>
-
-                        <div :class="{'input-field': true, 'input-field error': errors.has('subject') }">
-                            <label>Sujet</label>
-                            <input type="text" v-model="dataForm.subject" id="subject" name="subject" value="">
-                            <span class="line"></span>
-                        </div>
-
-                        <div :class="{'input-field': true, 'input-field error': errors.has('message') }">
-                            <label>Message</label>
-                            <textarea rows="4" v-model="dataForm.message" id="message" v-validate="'required'" name="message"></textarea>
-                            <span class="line"></span>
-                            <span v-show="errors.has('message')" class="text-danger">Veuillez laisser votre message s'il vous plaît</span>
-                        </div> 
-
-                        <span class="btn-outer btn-primary-outer ripple">
-                            <input @click.prevent="validateBeforeSubmit('Contact')" class="btn btn-lg btn-primary" type="submit" value="Envoyer">
-                        </span>
-                    </form>
-                </aside>
-                <!-- .widget_contact -->
-        
-            </div>
-            <!-- .widget-area -->
-        </div>
-        <!-- .sidebar -->
-
-
-        <div class="wrapper">
-            <header class="header">
-                <div class="head-bg" style="background-image: url('img/uploads/rs-cover-awaki-tchalim-full-stack-developper-togo-africa.jpg')"></div>
-            
-                <div class="head-bar">
-                    <div class="head-bar-inner">
-                        <div class="row">
-                            <div class="col-sm-3 col-xs-6">
-                                <!--a class="logo" href="index.html"><span>RS</span>card</a -->
-                                <a class="head-logo" href=""
-                                ><img style=" width: 120px;" src="img/logo-awaki-tchalim-full-stack-developper-togo-africa.png" alt="aWaki"/></a>
-                                <a class="head-logo no-sticky-logo" href=""
-                                ><img style=" width: 120px;" src="img/logo-white-awaki-tchalim-full-stack-developper-togo-africa.png" alt="aWaki"/></a>
-                            </div>
-            
-                            <div class="col-sm-9 col-xs-6">
-                                <div class="nav-wrap">
-                                    <nav id="nav" class="nav">
-                                        <ul class="clearfix">
-                                            <li><a href="#about">Qui suis-je ?</a></li>
-                                            <li><a href="#skills">Compétences</a></li>
-                                            <li><a href="#portfolio">Portfolio</a></li>
-                                            <li><a href="#experience">Expérience</a></li> 
-                                            <li><a href="#contact">Contact <span></span></a></li>
-                                            <li><a href="/en"><img style="width:20px" src="../img/lang/Flag_of_the_United_Kingdom.svg" alt=""/> En</a></li>
-                                        </ul>
-                                    </nav>
-            
-                                    <button class="btn-mobile btn-mobile-nav">Menu</button>
-                                    <button class="btn-sidebar btn-sidebar-open"><i class="rsicon rsicon-menu"></i></button>
-                                </div>
-                                <!-- .nav-wrap -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- .header -->
-            
-            <div class="content">
-                <div class="container">
-        
-                <!-- START: PAGE CONTENT -->
-                <section id="about" class="section section-about">
-                    <div class="animate-up">
-                        <div class="section-box">
-                            <div class="profile">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="profile-photo"><img src="img/uploads/photo-v1-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="Awaki TCHALIM"/></div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="profile-info">
-                                            <div class="profile-preword"><span>Hello !</span></div>
-                                            <h1 class="profile-title"><span>Je suis</span> Awaki TCHALIM</h1>
-                
-                                            <h2 class="profile-position">Développeur sénior Full-stack</h2></div>
-                                        <ul class="profile-list">
-                                            <li class="clearfix">
-                                                <strong class="title">Adresse</strong>
-                                                <span class="cont">Tosi, Lomé, Togo</span>
-                                            </li>
-                                            <li class="clearfix">
-                                                <strong class="title">E-mail</strong>
-                                                <span class="cont"><a href="mailto:awaki.tchalim@gmail.com">awaki.tchalim@gmail.com</a></span>
-                                            </li>
-                                            <li class="clearfix">
-                                                <strong class="title">Téléphone</strong>
-                                                <span class="cont"><a href="tel:+22891412505">+228 91 41 25 05</a></span>
-                                            </li> 
-                                            <li class="clearfix">
-                                                <strong class="title">Langues</strong>
-                                                <span class="cont"><a href="/">Français</a>, <a href="/en">Anglais</a></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile-social">
-                                <ul class="social">
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                
-                        <div class="section-txt-btn">
-                            <p><a class="btn btn-lg btn-border ripple" target="_blank"
-                                href="documents/curriculum-vitae-tchalim-awaki-developpeur-full-stack.pdf">Télécharger mon CV</a></p>
-                
-                            <p class="text-justify">
-                                Avec plus de 07ans d’expérience, mes compétences incluent
-                                MySql, PHP, Laravel, Javascript, Vue js, WordPress, HTML, CSS,
-                                REST/RESTful APIs. Je suis un professionnel dynamique et
-                                soucieux des détails avec un talent pour conceptualiser et
-                                fournir des solutions élégantes et conviviales de manière
-                                efficace et efficiente. Je suis passionné de l'apprentissage de
-                                nouvelles technologies et de l'amélioration des connaissances
-                                globales. Une personne dévouée et debrouillarde démontrant
-                                une forte capacité à déboguer et améliorer l'efficacité des
-                                applications.<br><br>
-    D'un naturel sociable et joyeux, j'aspire à rejoindre une équipe
-    enrichissante et de porter avec elle des projets motivants !
-    </p>
-                        </div>
-                    </div>
-                </section>
-                <!-- #about -->
-
-                <section id="skills" class="section section-skills">
-                    <div class="animate-up">
-                        <h2 class="section-title">Compétences professionnelles</h2>
-                
-                        <div class="section-box">
-                            <h2 class="text-center widget-title">Développeur sénior Full-stack</h2>
-
-                            <div class="back-end"> 
-                                <h3>Back-end</h3>
-                                <div class="row"> 
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">PHP & MYSQL</span>
-                                                <span class="bar-value">90%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="90%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                    
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">LARAVEL (Framework php)</span>
-                                                <span class="bar-value">90%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="90%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                    
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">SLIM (Framework PHP)</span>
-                                                <span class="bar-value">80%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="80%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="front-end"> 
-                                <h3>Front-end</h3>
-                                <div class="row"> 
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">HTML, CSS</span>
-                                                <span class="bar-value">95%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="95%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">JAVASCRIT</span>
-                                                <span class="bar-value">87%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="90%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">VUE JS</span>
-                                                <span class="bar-value">90%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="92%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row"> 
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">REACT JS</span>
-                                                <span class="bar-value">45%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="45%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">SASS,LESS</span>
-                                                <span class="bar-value">60%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="60%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-4">
-                                        <div class="progress-bar">
-                                            <div class="bar-data">
-                                                <span class="bar-title">twitter Bootstrap</span>
-                                                <span class="bar-value">85%</span>
-                                            </div>
-                                            <div class="bar-line">
-                                                <span class="bar-fill" data-width="85%"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class=""> 
-                                <div class="row"> 
-                                    <div class="front-end col-md-8"> 
-                                        <h3>CMS</h3>
-                                        <div class="row"> 
-                                            <div class="col-sm-6">
-                                                <div class="progress-bar">
-                                                    <div class="bar-data">
-                                                        <span class="bar-title">WORDPRESS</span>
-                                                        <span class="bar-value">90%</span>
-                                                    </div>
-                                                    <div class="bar-line">
-                                                        <span class="bar-fill" data-width="90%"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="progress-bar">
-                                                    <div class="bar-data">
-                                                        <span class="bar-title">DRUPAL 8</span>
-                                                        <span class="bar-value">60%</span>
-                                                    </div>
-                                                    <div class="bar-line">
-                                                        <span class="bar-fill" data-width="60%"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="front-end col-md-4">
-                                        <h3>MOBILE</h3>
-                                        <div class=""> 
-                                            <div class="progress-bar">
-                                                <div class="bar-data">
-                                                    <span class="bar-title">FLUTTER / DART</span>
-                                                    <span class="bar-value">40%</span>
-                                                </div>
-                                                <div class="bar-line">
-                                                    <span class="bar-fill" data-width="40%"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-
-
-                            <div class="front-end widget widget_tag_cloud text-center">
-                                <div class="tagcloud">
-                                    <a title="REST APIS">REST APIS</a>
-                                    <a title="GOOGLE APIS">GOOGLE APIS</a>
-                                    <a title="GIT">GIT</a>
-                                    <a title="YARN, NPM">YARN, NPM</a>
-                                    <a title="COMPOSER">COMPOSER</a>
-                                    <a title="SLACK, TRELLO">SLACK, TRELLO</a>
-                                    <a title="Administration système">APACH, NGINX</a>
-                                    <a title="Administration système">WHM - CPANEL, PLESK</a>
-                                    <a title="Infographie">ADOBE PHOTOSHOP, ILLUSTRATOR, 
-                                        INDESIGN</a>
-                                    <a title="Audio-visuel">AFTER EFFECT, PREMIERE PRO</a>
-                                </div>
-                            </div>
-                                
-
-                        </div>
-                    </div>
-                </section>
-                <!-- #skills -->
-                
-                <section id="portfolio" class="section section-portfolio">
-                <div class="animate-up">
-                <h2 class="section-title">Portfolio</h2>
-                
-                <!--div class="filter">
-                    <div class="filter-inner">
-                        <div class="filter-btn-group">
-                            <button data-filter="*">Tout</button>
-                            <button data-filter=".web">Web</button>
-                            <button data-filter=".mobile">Desktop & Mobile</button>
-                        </div>
-                        <div class="filter-bar">
-                            <span class="filter-bar-line"></span>
-                        </div>
-                    </div>
-                </div-->
-                
-                <div class="grid">
-                    <div class="grid-sizer"></div>
-                
-                    <div class="grid-item size22 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/gsapp-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">GSAPP</h3>
-                                        <h4 class="portfolio-cat">Application de gestion de secours d'urgence</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox1"
-                                            href="#portfolio1-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio1-inline1" class="fancybox-inline-box">
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="img/uploads/portfolio/gsapp_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <h2 class="inline-title">GSAPP, l'application de gestion de secours d'urgence</h2>
-                
-                                    <div class="inline-text">
-                                        <p>L’application a connu beaucoup de mutations influencée par l’évolution des activités, 
-                                            des besoins et des offres de la société. Ainsi : <br><br>
-
-                                            La toute première version est développée en Java. (2014-2016)
-                                            Je l’ai développé de A à Z en application windows Java Swing  
-                                            (Java desktop application) avec l’IDE Netbeans et MySql pour base de données. 
-                                            J’ai intégré JasperReports  pour les rapports.<br><br>
-                                            
-                                            Avec l’évolution des activités et la mise en place d’autres agences dans d’autres 
-                                            villes et afin de rendre disponibles les informations des abonnées en temps réel, 
-                                            j’ai opté pour solution temporaire en attendant la version web, de déployer 
-                                            l’application jusque là disponible uniquement en réseau local sur un serveur distant. 
-                                            J’ai ainsi obtenu un serveur sous Debian 9 sur Google cloud plateforme et dans un bref 
-                                            délai et temporairement mis l’application en ligne à travers le serveur web Webswing<br><br>
-                                            
-                                            
-                                            Les conditions de travail, les contraintes survenu avec l’extension des activités, 
-                                            la recherche de plus de fluidité et d’une meilleurs expérience utilisateur ont motivé 
-                                            ma décision de reprendre entièrement GSAPP en application web. D'où la version 2 avec MySql, 
-                                            PHP, Laravel au back end (sanctum pour l'authentification et spatie pour les permissions et droits d’accès), 
-                                            au front Vue.js avec laravel-mix et le Kit de composant Element et npm comme gestionnaire de paquets.
-                                            La fluidité de l’application et ses fonctionnalités, surtout le carnet médical électronique 
-                                            joue un grand rôle dans les différentes interventions de Togo assistance et aide à sauver des 
-                                            vies en cas de sinistre (accident de circulation, de travail ou maladie)<br><br>
-                                            
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
-                
-                    <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/caliente-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">Caliente Togo</h3>
-                                        <h4 class="portfolio-cat">Site Officiel</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="http://calientetogo.com" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox2"
-                                            href="#portfolio2-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio2-inline1" class="fancybox-inline-box">
-
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="img/uploads/portfolio/caliente_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <div class="inline-text">
-                                        <h2 class="inline-title">Caliente Togo</h2>
-                
-                                        <p>CALIENTE est un Méga événement grand public qui se déroule à la colombe de la Paix de Lomé (Togo) chaque 31 Décembre et passe sur la Télévision nationale en direct. Chargé du marketing digital et de la production audio-visuel au sein du comité d’organisation depuis 2016, mes créations sont délicates pour l’image et la bonne réussite de cet événement national. J’ai créé et hébergé le site web officiel calientetogo.com (PHP, twitter bootstrap, html, css, JavaScript) chaque année je produis avec Adobe Photoshop, After effect, Premiere pro des supports visuels (Affichage pour les réseaux sociaux, affiches imprimées, dossier de sponsoring, cartes d’invitation) et audio-visuels (Génériques, Jingles, Spots vidéo) pour l'événement.
-                                        </p>
-                                    </div>
-                                </div> 
-
-                            </div>
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
-                
-
-
-
-
-
-
-
-                    <!-- .grid-item -->
-                    <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/extrasrp-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">EXTRASRP</h3>
-                                        <h4 class="portfolio-cat">...</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="#" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox12"
-                                            href="#portfolio13-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio13-inline1" class="fancybox-inline-box">
-
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="../img/uploads/portfolio/extrasrp_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <div class="inline-text">
-                                        <h2 class="inline-title">ExtraSrp</h2>
-                
-                                        <p>
-                                            Application web de suivi des activités par des acteurs externes tels que les fournisseurs et les clients de la société. Conçu pour être greffer au système de gestion interne (avec Dolibarr ERP CRM développé en PHP MySql) J’ai opté côté back end pour PHP avec Slim framework et Éloquent comme générateur de requêtes, Au front end, Vue.js avec le célèbre framework de composant  Material Design Vuetify, REST/RESTful APIs avec le client http axios. 
-
-                                            <br><br>L’application n’est pas encore en production mais sera un très bon qui facilitera la gestion des contrats, des commandes et bien d’autres.
-                                            </p>
-                                    </div>
-                                </div> 
-
-                            </div>
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
-
-                
-
-
-                      <!-- .grid-item -->
-                      <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/sciagri-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">SCIAGRI</h3>
-                                        <h4 class="portfolio-cat">...</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="#" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox13"
-                                            href="#portfolio14-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio14-inline1" class="fancybox-inline-box">
-
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="../img/uploads/portfolio/sciagri_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <div class="inline-text">
-                                        <h2 class="inline-title">sciagri</h2>
-                
-                                        <p>
-                                            Excellente application mobile et web de suivis de production agricole biologique. Un contrôle complet depuis la semence jusqu’à la récolte et l’exportation suivant des normes préétablies des instution de certification BIO.
-Entant que développeur fullstack j’ai travaillé sur le back end (PHP, Laravel,MySql) et le front end web (Html, css, SASS, JavaScript, Vue.js avec le kit de composants d'interface Element, REST/RESTful APIs ) au sein d’une équipe de 6 développeurs dont 2 mobiles, un Designer chargé de prototypage avec Figma.
-<br><br>
-SCIAGRI grâce à ses fonctionnalités et sa disponibilité hors ligne a permis de réduire les temps de contrôle de production de plus de 80% et donc d'augmenter considérablement la productivité.
-
-                                            </p>
-                                    </div>
-                                </div> 
-
-                            </div>
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
-
-
-
-
-
-                      <!-- .grid-item -->
-                      <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/engine-pdf-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">ENGINE PDF</h3>
-                                        <h4 class="portfolio-cat">...</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="#" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox14"
-                                            href="#portfolio15-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio15-inline1" class="fancybox-inline-box">
-
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="../img/uploads/portfolio/engine-pdf_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <div class="inline-text">
-                                        <h2 class="inline-title">ENGINE PDF</h2>
-                
-                                        <p>
-                                            Véritable outils de génération de bons de livraison. Avant le projet INTRASRP de gestion interne, la société gérait ses livraisons à travers un fichier google sheet. En guise de solution temporaire, j’ai développé une interface qui récupère automatiquement à travers le Sheets API chacune des plus de 5000 lignes de bons de livraison du fichier google sheet et en fait une présentation graphique html css imprimable et exportable en PDF.
-                                            <br><br>
-                                            Cet outils a permis de satisfaire en un temps records bon nombre de clients
-
-                                            </p>
-                                    </div>
-                                </div> 
-
-                            </div>
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
- 
-
-
-
-
-
-
-
-
-                    <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/arm-digital-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt=""/>
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">ARM DIGITAL MARKETING</h3>
-                                        <h4 class="portfolio-cat">Site officiel</h4>
-                
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="https://armdigitalmarketing.com" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox3"
-                                            href="#portfolio3-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                            <a class="portfolioFancybox hidden" data-fancybox-group="portfolioFancybox3"
-                                            href="#portfolio3-inline2"></a> 
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio3-inline1" class="fancybox-inline-box">
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="img/uploads/portfolio/arm-digital_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <div class="inline-text">
-                                        <h2 class="inline-title">ARM DIGITAL MARKETING</h2>
-                
-                                        <p>ARM Digital est une agence de marketing digital basée en France, île Maurice, Togo et Cameroun.</p>
-                                    </div>
-                                </div> 
-                            </div> 
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div>
-                    <!-- .grid-item -->
-    
-
-
-
-                    <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/talkag-home-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">TalkAg.com</h3>
-                                        <h4 class="portfolio-cat">Réseau social agricole</h4>
-                    
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="http://talkag.com/home" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox2"
-                                            href="#portfolio4-inline1"><i class="rsicon rsicon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                    
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio4-inline1" class="fancybox-inline-box">
-                                <div class="inline-embed" data-embed-type="image"
-                                    data-embed-url="img/uploads/portfolio/talkag-home_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                <div class="inline-cont">
-                                    <h2 class="inline-title">TalkAg.com</h2>
-                                    <div class="inline-text">
-                                        <p>Une excellente plateforme web et mobile d’échange entre acteurs agricoles. J’ai eu à travailler surtout sur les refontes  d’interfaces en tant que développeur Full-stack FH. Avec du PHP, MySql, JavaScript, jQuery, Html, css, Bootstrap, j’ai revue pour une meilleure expérience utilisateur des interfaces stratégiques tels que l’accueil, le fil d’actualités, les blogs avec WordPress, les centres d’intérêts etc …
-                                            </p>
-                                    </div>
-                                </div>
-                            </div> 
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div><!-- .grid-item -->
-
-
-                    <div class="grid-item size11 web">
-                        <div class="grid-box">
-                            <figure class="portfolio-figure">
-                                <img src="img/uploads/portfolio/soycain-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
-                                <figcaption class="portfolio-caption">
-                                    <div class="portfolio-caption-inner">
-                                        <h3 class="portfolio-title">SOYCAIN</h3>
-                                        <h4 class="portfolio-cat">Site officiel</h4>
-                    
-                                        <div class="btn-group">
-                                            <a class="btn-link" href="http://soycain.com" target="_blank"><i
-                                                    class="rsicon rsicon-link"></i></a>
-                                            <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox5"
-                                                href="#portfolio5-inline1"><i class="rsicon rsicon-eye"></i></a> 
-                                        </div>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                    
-                            <!-- Start: Portfolio Inline Boxes -->
-                            <div id="portfolio5-inline1" class="fancybox-inline-box">
-                                    <div class="inline-embed" data-embed-type="image" data-embed-url="img/uploads/portfolio/soycain_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                    <div class="inline-cont">
-                                        <h2 class="inline-title">SOYCAIN</h2>
-                                        <div class="inline-text">
-                                            <p>Soycain est une société anonyme spécialisé dans la production et la commercialisation de produits conventionnels et biologiques sans OGM.
-                                                </p>
-                                        </div>
-                                    </div>
-                            </div>
-                    
-                            <!-- End: Portfolio Inline Boxes -->
-                        </div>
-                    </div><!-- .grid-item -->
-
-
-
-                    
-
-
-
-                        <div class="grid-item size11 mobile web">
-                            <div class="grid-box">
-                                <figure class="portfolio-figure">
-                                    <img src="img/uploads/portfolio/tidyd-awaki-tchalim-full-stack-developper-togo-africa.jpg" alt="" />
-                                    <figcaption class="portfolio-caption">
-                                        <div class="portfolio-caption-inner">
-                                            <h3 class="portfolio-title">Tidyd Home organizer</h3>
-                                            <h4 class="portfolio-cat">Site de présentation</h4>
-
-                                            <div class="btn-group">
-                                                <a class="btn-link" href="https://tidyd.fr" target="_blank"><i
-                                                        class="rsicon rsicon-link"></i></a>
-                                                <a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox6"
-                                                    href="#portfolio6-inline2"><i class="rsicon rsicon-eye"></i></a> 
-                                            </div>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-
-                                <!-- Start: Portfolio Inline Boxes -->
-                                <div id="portfolio6-inline2" class="fancybox-inline-box">
-                                    <div class="inline-embed" data-embed-type="image" data-embed-url="img/uploads/portfolio/tidyd_lg-awaki-tchalim-full-stack-developper-togo-africa.jpg"></div>
-                                        <div class="inline-cont">
-                                            <h2 class="inline-title">Tidyd Home organizer</h2>
-                                            <div class="inline-text">
-                                                <p>Site web officiel de l’application de rangement Tidyd. J’ai travaillé en tant que Webdesigner et administrateur système au sein d’une équipe de 5 talents dont 4 développeurs mobiles et un designer chargé du prototypage avec figma. Je me suis chargé de tout l’aspect technique du marketing digital et de l’administration système des serveurs  de marketing (VPS sous Centos 7, de tests (serveur dédié sous windows server 2016) et de production (Azure).
-                                                    Avec PHP, Vue.js, REST/RESTful APIs, axios, Html, css, JavaScript, bootstrap,  J’ai développé le thème WordPress du site officiel, un plugin WordPress de gestions des contacts depuis les plateformes, les templates email, les pages web intégrées à l’application et des pages ou site de campagne marketing digital.
-                                                    <br><br>
-                                                    L’application après son lancement sera l’outils de rangement par excellence et la stratégie marketing digital mise en place avec mon apport technique permettra de booster la notoriété et les inscriptions
-                                                    </p>
-                                            </div>
-                                        </div> 
-
-                                </div>
-                                <!-- End: Portfolio Inline Boxes -->
-                            </div>
-                        </div><!-- .grid-item -->
-
-
-
-
-                </div>
-                
-                <div class="grid-more">
-                    <span class="ajax-loader"></span>
-                    <button class="btn btn-border ripple"><i class="rsicon rsicon-add"></i></button>
-                </div>
-                </div>
-                </section>
-                <!-- #portfolio -->
-
-
-
-
-
-
-
-
-
-
-                
-                <section id="experience" class="section section-experience">
-                    <div class="animate-up">
-                        <h2 class="section-title">Expérience professionnelle</h2>
-                
-                        <div class="timeline">
-                            <div class="timeline-bar"></div>
-                            <div class="timeline-inner clearfix">
-                                <div class="timeline-box timeline-box-left">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-right">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date">DEPUIS AOÛT 2019</div>
-                                        <h3>ITVOG</h3>
-                                        <h4>DÉVELOPPEUR SÉNIOR FULL-TACK</h4>
-                
-                                        <p style="text-align: justify;">Itvog est une succursale d’une société française
-                                            spécialisée dans l’ingenieurie informatique. Je travaille
-                                            actuellement ici en tant que Dévéloppeur principal
-                                            responsable de la création, du déploiement et de la
-                                            maintenance des sites et applications Web internes.
-                                        
-                                            <ul>
-                                                <li>Direction d'une équipe Agile de 7 développeurs web
-                                                </li><br>
-                                                <li>Définition des spécificités techniques des projets
-                                                    selon les exigences du cahier des charges. Création
-                                                    des exigences de codage afin de maintenir un travail
-                                                    de qualité.</li><br>
-                                                <li>Travailler en étroite collaboration avec l’équipe UI/UX
-                                                    pour intégrer des interfaces utilisateurs de haute
-                                                    qualité avec VUE JS (Vuetify, Element, Bootstrap) sur
-                                                    de solides et sécurisés back end avec MySql, PHP,
-                                                    LARAVEL ou Slim framework en RESTful API. J’ai
-                                                    ainsi créé ou collaboré sur plus de 20 plateformes et
-                                                    site web, y compris un réseau social.
-                                                </li><br>
-                                                <li>Revue de code et optimisation de l’expérience
-                                                    utilisateur.</li><br>
-                                                <li>Administration systeme : Gestion du serveur dédié
-                                                    sous LINUX</li><br>
-                                                <li>Assistance technique au recrutement. Ce qui m’a
-                                                    permis d’interviewer plus de 40 employés potentiels.</li><br>
-                                                <li>Travail avec un comité de 3 membres pour organiser
-                                                    des activités ludiques pour les employés</li><br>
-                                            </ul>
-
-                                        </p> 
-
-                                        <div class="widget widget_tag_cloud text-center">
-                                            <div class="tagcloud">
-                                                <a title="GIT">GIT, COMPOSER</a>
-                                                <a title="Back-end">MYSQL, PHP, LARAVEL</a>
-                                                <a title="Back-end">SLIM FRAMEWORK</a>
-                                                <a title="APIREST">RESTful API</a>
-                                                <a title="Front-end">VUE JS, bootstrap</a>
-                                                <a title="CMS">WORDPRESS</a>
-                                                <a title="Outils">SLACK, TRELLO</a>
-                                                <a title="Infographie">PHOTOSHOP, INDESIGN</a>
-                                            </div>
-                                        </div>
-
-                                        
-                                    </div>
-                                </div>
-                
-                                <div class="timeline-box timeline-box-right">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-left">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date">Novembre 2019 - Septembre 2020</div>
-                                        <h3>ARM Mauritius (île Maurice)</h3>
-                                        <h4>DÉVELOPPEUR FULL-STACK <br><em>(Télétravail / temps partiel)</em></h4>
-                
-                                        <p style="text-align: justify;">Agence de Marketing Digital. J’ai eu à travailler sur des refontes et
-                                            des créations complètes de sites web à travers des cahiers de
-                                            charge bien définis et des outils d’organisation et de gestion de
-                                            projets tels que Trello, monday.com, slack et Gitlab pour le
-                                            versioning
-                                        
-                                            <ul>
-                                                <li>Maintenance corrective et évolutive de sites Web et de
-                                                    e-commerce sur WordPress (woocommerce)
-                                                </li><br>
-                                                <li>Développement WordPress: Création ou personnalisation de
-                                                    plugins et thèmes. J’ai développé plus de 10 sites et
-                                                    applications web avec MariaDB, PHP, WordPress, HTML, CSS,
-                                                    JavaScript, VUE JS, Twilio Messaging API, MailJet ...</li><br>
-                                                <li>Analyses et optimisation SEO, campagne de publicité
-                                                    (Google ads, Facebook Ads, google analytics, Google search
-                                                    console)</li><br>
-                                                <li>Administration système : VPS sous Centos 7 et un Serveur
-                                                    Dédié sous windows server 2016</li><br>
-                                            </ul>
-
-                                        </p> 
-
-                                        <div class="widget widget_tag_cloud text-center">
-                                            <div class="tagcloud">
-                                                <a title="Back-end">MYSQL, PHP</a>
-                                                <a title="APIREST">RESTful Api</a>
-                                                <a title="Front-end">VUE JS, bootstrap</a>
-                                                <a title="CMS">WORDPRESS</a>
-                                                <a title="Outils">TRELLO</a>
-                                                <a title="Administrations système">WHM-CPANEL, PLESK, apache2, IIS10</a>
-                                                <a title="GIT">GIT</a>
-                                            </div>
-                                        </div>
-    
-                                    </div>
-                                </div>
-                
-                                <div class="timeline-box timeline-box-left">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-right">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date">Mars 2016  - Mars 2019</div>
-                                        <h3>UNICOM AFRICA</h3>
-                                        <h4>CHEF CRÉA, MULTIMÉDIA ET WEB</h4>
-                
-                                        <p style="text-align: justify;"> 
-                                            <ul>
-                                                <li>Encadrement d'une équipe de 3 développeurs junior et 2
-                                                    infographistes</li><br>
-                                                <li>Travailler en étroite collaboration avec les graphistes, l’équipe
-                                                    marketing et les clients pour construire d’élégantes solutions
-                                                    digitales: Plus de 8 plateformes web conçue incluant le site et
-                                                    systeme de gestion de Caliente, un géant évenement
-                                                    annuelle du réveillon au Togo.
-                                                </li><br>
-                                                <li>J’ai Participé activement en tant que chef créa sur des projets
-                                                    de communication. J’ai créé sur mesure et fais imprimer des
-                                                    affiches et documents de tout format (Plaquettes
-                                                    commerciales, dossier projet, flyers, dépliants, kakémonos,
-                                                    agenda, bloc-notes etc....)</li><br>
-                                                <li>Optimisation SEO</li><br>
-                                                <li>Administration système</li><br>
-                                            </ul>
-
-                                        </p> 
-
-                                        <div class="widget widget_tag_cloud text-center">
-                                            <div class="tagcloud">
-                                                <a title="Back-end">MYSQL, PHP</a>
-                                                <a title="Front-end">Html, css, javascript</a>
-                                                <a title="front-end">Bootstrap</a>
-                                                <a title="CMS">WORDPRESS</a>
-                                                <a title="VPS Administration">Google cloud plateforme</a>
-                                                <a title="Audio-visuel">After effect, Première Pro</a>
-                                                <a title="Infographie">Photoshop, Illustrator, Indesign</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                
-                
-                                <div class="timeline-box timeline-box-right">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-left">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date">Avril 2014  - Février 2016</div>
-                                        <h3>TOGO ASSISTANCE</h3>
-                                        <h4>DÉVELOPPEUR D’APPLICATION ET INFOGRAPHISTE</h4>
-                
-                                        <p style="text-align: justify;">
-                                            Société d’ambulance et de vsl. J’ai travaillé sur le cycle de vie
-                                            complet du développement d’application windows (Java swing)
-                                            et web depuis la collecte des besoins jusqu’au deploiement
-                                            <ul>
-                                                <li>J’ai développé et fait évoluer un excellent et complet outils de
-                                                    gestion interne qui a amélioré la vitesse de traitement de
-                                                    données des abonnés, des sinistres de plus de 90 % pour
-                                                    cette noble société
-                                        </li><br>
-                                            <li>Planifié, écrit et débogué des applications Web et des
-                                                logiciels avec une précision totale
-                                            </li><br>
-
-                                            <li>Aidé à résoudre des problèmes Techniques
-                                            </li><br>
-
-                                            </ul>
-                                        </p> 
-
-                                        <div class="widget widget_tag_cloud text-center">
-                                            <div class="tagcloud">
-                                                <a title="Front-end">Html, css, javascript</a>
-                                                <a title="CMS">WORDPRESS</a>
-                                                <a title="Audio-visuel">After effect, Première Pro</a>
-                                                <a title="Infographie">Photoshop, Illustrator, Indesign</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- #experience -->
-                
-                <section id="education" class="section section-education">
-                    <div class="animate-up">
-                        <h2 class="section-title">Education</h2>
-                
-                        <div class="timeline">
-                            <div class="timeline-bar"></div>
-                            <div class="timeline-inner clearfix"> 
-
-                                <div class="timeline-box timeline-box-compact timeline-box-left">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-right">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date"><span>2014</span></div>
-                                        <h3>Licence professionnelle en Génie Logiciel</h3>
-                                        <h4>UNIVERSITÉ DEFITECH</h4>
-                                    </div>
-                                </div>
-                
-                                <div class="timeline-box timeline-box-compact timeline-box-right">
-                                    <span class="dot"></span>
-                
-                                    <div class="timeline-box-inner animate-left">
-                                        <span class="arrow"></span>
-                
-                                        <div class="date"><span>2013</span></div>
-                                        <h3>BTS en Informatique de gestion option Développement d'applications</h3>
-                                        <h4>UNIVERSITÉ DEFITECH</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                
-                <section id="interests" class="section section-interests">
-                    <div class="animate-up">
-                        <h2 class="section-title">Ce dont je suis fier</h2>
-
-                        <div class="section-box" style="text-align:left!important">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h3>Mon courage</h3>
-                                <p>De toujours quitter ma zone de confort, je n’ai aucune hésitation à faire tout ce qu’il faut pour atteindre mes objectifs.</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>Ma concentration et ma persévérance</h3>
-                                <p>En toute situation, difficile ou non, je
-                                    garde toujours mon calme et ma
-                                    concentration sur mes objectifs pour
-                                    avancer</p>
-                            </div>
-                            <div class="col-sm-12">
-                                <h3>Ma créativité, ma polyvalence,
-                                    ma flexibilité et mon adaptabilité</h3>
-                                <p>A l'image du monde, de la technologie
-                                    et des marchés, je m'adapte
-                                    facilement à des environnements de
-                                    travail différents, des techniques de
-                                    travail en perpétuelle évolution et des
-                                    collaborateurs aux profils différents.</p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- #interests -->
-                
-            
-                
-                <section id="contact" class="section section-contact">
-                    <div class="animate-up">
-                        <h2 class="section-title">Contactez moi</h2>
-                
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="section-box contact-form">
-                                    <h3>N'hésitez pas à m'écrire !</h3>
-                
-                                    <form class="rsForm" ref="contact_me">
-                                        <div :class="{'input-field': true, 'input-field error': errors.has('nom') }">
-                                            <label>Nom</label>
-                                            <input type="text" v-model="dataForm.nom" id="nom" v-validate="'required'" name="nom" value="">
-                                            <span class="line"></span>
-                                            <span v-show="errors.has('nom')" class="text-danger">Votre nom est requis</span>
-                                        </div>
-                
-                                        <div :class="{'input-field': true, 'input-field error': errors.has('email') }">
-                                            <label>E-mail</label>
-                                            <input type="email" v-model="dataForm.email" id="email" v-validate="'required|email'" name="email" value="">
-                                            <span class="line"></span>
-                                            <span v-show="errors.has('email')" class="text-danger">Veuillez saisir une adresse email valide</span>
-                                        </div>
-                
-                                        <div :class="{'input-field': true, 'input-field error': errors.has('tel') }">
-                                            <label>Téléphone</label>
-                                            <input type="text" v-model="dataForm.tel" id="tel" name="tel" value="">
-                                            <span class="line"></span>
-                                        </div>
-                
-                                        <div :class="{'input-field': true, 'input-field error': errors.has('subject') }">
-                                            <label>Sujet</label>
-                                            <input type="text" v-model="dataForm.subject" id="subject" name="subject" value="">
-                                            <span class="line"></span>
-                                        </div>
-                
-                                        <div :class="{'input-field': true, 'input-field error': errors.has('message') }">
-                                            <label>Message</label>
-                                            <textarea rows="4" v-model="dataForm.message" id="message" v-validate="'required'" name="message"></textarea>
-                                            <span class="line"></span>
-                                            <span v-show="errors.has('message')" class="text-danger">Veuillez laisser votre message s'il vous plaît</span>
-                                        </div> 
-                
-                                        <span class="btn-outer btn-primary-outer ripple">
-                                            <input @click.prevent="validateBeforeSubmit('Contact')" class="btn btn-lg btn-primary" type="submit" value="Envoyer">
-                                        </span>
-                                    </form>
-                                </div>
-                            </div>
-                
-                            <div class="col-sm-6">
-                                <div class="section-box contact-info has-map">
-                                    <ul class="contact-list">
-                                        <li class="clearfix">
-                                            <strong>Adresse</strong>
-                                            <span>Totsi, Lomé, Togo</span>
-                                        </li>
-                                        <li class="clearfix">
-                                            <strong>Téléphone</strong>
-                                            <span><a href="tel:+22891412505">+228 91 41 25 05</a></span>
-                                        </li>
-                                        <li class="clearfix">
-                                            <strong>E-mail</strong>
-                                            <span><a href="mailto:awaki.tchalim@gmail.com">awaki.tchalim@gmail.com</a></span>
-                                        </li>
-                                    </ul>
-                
-                                    <div id="myhome">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5513946916376!2d1.185771714333216!3d6.190729795518242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102158f683b06c23%3A0xa42fa0074841b542!2sRue%2076%20TOT%2C%20Lom%C3%A9!5e0!3m2!1sfr!2stg!4v1605452379291!5m2!1sfr!2stg" allowfullscreen="" aria-hidden="false" tabindex="0" style="border:0;width:100%;height:100%"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- #contact -->
-
-                <!-- END: PAGE CONTENT -->
-        
-            </div>
-            <!-- .container -->
-        </div>
-        <!-- .content -->
-
-
-
-        <footer class="footer">
-            <div class="footer-social">
-                <ul class="social">
-                    <li><a class="ripple-centered" href="https://facebook.com/espoir.tchalim" target="_blank"><i class="rsicon rsicon-facebook"></i></a></li> 
-                    <li><a class="ripple-centered" href="https://www.linkedin.com/in/awaki-tchalim/" target="_blank"><i class="rsicon rsicon-linkedin"></i></a></li> 
-                    <li><a class="ripple-centered" href="https://instagram.com/espoirtchalim" target="_blank"><i class="rsicon rsicon-instagram"></i></a></li>
-                </ul>
-            </div>
-        </footer>
-        <!-- .footer -->
-        
-        </div>
-        <!-- .wrapper -->
-    
-        <a class="btn-scroll-top" href="#"><i class="rsicon rsicon-arrow-up"></i></a>
-        <div id="overlay"></div>
+<body>
+  <script>
+    // Prevent FOUC: apply theme before first paint
+    (function(){
+      var t = localStorage.getItem('at-theme');
+      if (!t) t = 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <!-- ===== CURSOR ===== -->
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo d'Awaki Tchalim">
+    <div id="lightbox-backdrop"></div>
+    <div id="lightbox-inner">
+      <img id="lightbox-img" src="assets/awaki-tchalim.jpg" alt="Awaki Tchalim — Senior Full-Stack Engineer" />
+      <p id="lightbox-caption">Awaki Tchalim — Senior Full-Stack Engineer</p>
     </div>
+    <button id="lightbox-close" aria-label="Fermer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
 
-    
-    <!-- Scripts -->
-     
- 
-    <!-- Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- ===== NAV ===== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-at">AT</span>
+        <span class="logo-dot"></span>
+      </a>
 
-    <!-- vuesax Loading -->
-    <script src="https://unpkg.com/vuesax@4.0.1-alpha.16/dist/vuesax.min.js"></script>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-en="About" data-fr="Profil">About</a></li>
+        <li><a href="#skills" data-en="Skills" data-fr="Compétences">Skills</a></li>
+        <li><a href="#experience" data-en="Experience" data-fr="Expériences">Experience</a></li>
+        <li><a href="#projects" data-en="Projects" data-fr="Projets">Projects</a></li>
+        <li><a href="#education" data-en="Education" data-fr="Formation">Education</a></li>
+        <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      </ul>
 
-    <!-- axios https://github.com/axios/axios -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"
-        integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg=="
-        crossorigin="anonymous"></script>
+      <div class="nav-actions">
+        <button id="langToggle" class="lang-btn" aria-label="Toggle language">
+          <span id="langIcon" class="lang-icon">FR</span>
+        </button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-thumb">
+              <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+              <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </span>
+          </span>
+        </button>
+        <a href="#contact" class="btn-hire" data-en="Hire Me" data-fr="Me contacter">Hire Me</a>
+        <button class="nav-burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <!-- include the VeeValidate library -->
-    <script src="https://cdn.jsdelivr.net/npm/vee-validate@<3.0.0/dist/vee-validate.js"></script>
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag" data-en="Senior Full-Stack Engineer" data-fr="Ingénieur Full-Stack Senior">Senior
+          Full-Stack Engineer</div>
+        <h1>Awaki <span class="gradient-text">Tchalim</span></h1>
+        <p class="hero-tagline"
+          data-en="10+ years crafting scalable SaaS platforms, enterprise APIs &amp; high-impact digital products."
+          data-fr="10+ ans à concevoir des plateformes SaaS, APIs d'entreprise &amp; produits digitaux à fort impact.">
+          10+ years crafting scalable SaaS platforms, enterprise APIs &amp; high-impact digital products.
+        </p>
+        <div class="hero-stack">
+          <span>Laravel</span><span>Vue.js</span><span>Docker</span><span>REST API</span><span>Flutter</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#experience" class="btn-primary" data-en="View Experience" data-fr="Voir les expériences">View
+            Experience</a>
+          <a href="#contact" class="btn-ghost" data-en="Get in Touch" data-fr="Me contacter">Get in Touch</a>
+          <a href="CV/cv-awaki-tchalim-en-2026.pdf" download class="btn-cv-download" id="heroCvBtn"
+            data-en="Download CV" data-fr="Télécharger CV"
+            data-href-en="CV/cv-awaki-tchalim-en-2026.pdf"
+            data-href-fr="CV/cv-awaki-tchalim-fr-2026.pdf">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-ring">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+          <div class="avatar-core">
+            <img src="assets/awaki-tchalim.jpg" alt="Awaki Tchalim" class="avatar-img" id="avatarTrigger"
+              title="Voir la photo" />
+            <div class="avatar-glow"></div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-en="Years Exp." data-fr="Ans d'exp.">Years Exp.</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="32">0</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-en="Platforms Built" data-fr="Plateformes">Platforms Built</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-en="Countries" data-fr="Pays">Countries</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span data-en="Scroll" data-fr="Défiler">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Who I Am" data-fr="Qui suis-je">Who I Am</span>
+        <h2 data-en="About Me" data-fr="À propos">About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p data-en="Senior Full-Stack Software Engineer with 10+ years of experience designing and delivering scalable SaaS platforms, enterprise web applications, and API-driven systems. Expert in PHP (Laravel) and JavaScript (Vue.js), with a deep focus on modular architecture and high-performance backends."
+            data-fr="Ingénieur logiciel Full-Stack Senior avec plus de 10 années d'expérience dans la conception et le développement de plateformes SaaS, d'applications web complexes et de systèmes basés sur des API REST sécurisées. Spécialisé en PHP (Laravel) et JavaScript (Vue.js), avec une attention particulière à la modularité et la performance.">
+            Senior Full-Stack Software Engineer with 10+ years of experience designing and delivering scalable SaaS
+            platforms, enterprise web applications, and API-driven systems. Expert in PHP (Laravel) and JavaScript
+            (Vue.js), with a deep focus on modular architecture and high-performance backends.
+          </p>
+          <p data-en="I've led Agile teams of up to 7 developers, architected 30+ platforms across fintech, e-health, municipal services, and digital marketplaces, and delivered robust remote collaboration with Canadian and European companies."
+            data-fr="J'ai dirigé des équipes Agile jusqu'à 7 développeurs, conçu 30+ plateformes dans la fintech, l'e-santé, les services municipaux et les marketplaces digitales, en collaborant à distance avec des entreprises canadiennes et européennes.">
+            I've led Agile teams of up to 7 developers, architected 30+ platforms across fintech, e-health, municipal
+            services, and digital marketplaces, and delivered robust remote collaboration with Canadian and European
+            companies.
+          </p>
+          <div class="about-badges">
+            <div class="badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+              <span data-en="Remote-first mindset" data-fr="Remote-first">Remote-first mindset</span>
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10" />
+                <path
+                  d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+              <span data-en="Open to relocation" data-fr="Relocation possible">Open to relocation</span>
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <span data-en="Team leadership & code review" data-fr="Leadership technique &amp; revue de code">Team
+                leadership &amp; code review</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-info-card glass-card">
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <div>
+              <span class="info-label" data-en="Location" data-fr="Localisation">Location</span>
+              <span class="info-val">Lomé, Togo</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4 19.79 19.79 0 0 1 1.6 4.81 2 2 0 0 1 3.6 2.6h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 21.5 17.5l.42-.58z" />
+            </svg>
+            <div>
+              <span class="info-label">Phone</span>
+              <span class="info-val">+228 91 41 25 05</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <div>
+              <span class="info-label">Email</span>
+              <span class="info-val"><a href="mailto:awaki@tchalim.dev">awaki@tchalim.dev</a></span>
+            </div>
+          </div>
+          <div class="info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
+            </svg>
+            <div>
+              <span class="info-label" data-en="Languages" data-fr="Langues">Languages</span>
+              <span class="info-val" data-en="French (Native) · English (Professional)"
+                data-fr="Français (natif) · Anglais (professionnel)">French (Native) · English (Professional)</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn-primary w-full" data-en="Get in Touch" data-fr="Me contacter">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="What I Master" data-fr="Ce que je maîtrise">What I Master</span>
+        <h2 data-en="Core Skills" data-fr="Compétences">Core Skills</h2>
+      </div>
+      <div class="skills-grid">
 
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+            <h3 data-en="Backend" data-fr="Backend">Backend</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Laravel / PHP</span><span>8 ans</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:95%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Slim Framework</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>REST API / Swagger</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:92%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>MySQL / MariaDB</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:88%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js"></script>
-    <script async defer src="js/plugins/jquery.mousewheel-3.0.6.pack.js"></script>
-    <script async defer src="js/plugins/imagesloaded.pkgd.min.js"></script>
-    <script async defer src="js/plugins/isotope.pkgd.min.js"></script>
-    <script async defer src="js/plugins/jquery.appear.min.js"></script>
-    <script async defer src="js/plugins/jquery.onepagenav.min.js"></script>
-    
-    <script async defer src="js/plugins/jquery.bxslider/jquery.bxslider.min.js"></script>
-    <script async defer src="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script async defer src="js/plugins/jquery.mediaelement/mediaelement-and-player.min.js"></script>
-    <script async defer src="js/plugins/jquery.fancybox/jquery.fancybox.pack.js"></script>
-    
-    <script async defer src="js/plugins/jquery.fancybox/helpers/jquery.fancybox-media.js"></script>
-    <script async defer src="js/plugins/jquery.owlcarousel/owl.carousel.min.js"></script>
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+            <h3 data-en="Frontend" data-fr="Frontend">Frontend</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Vue.js</span><span>8 ans</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:94%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>JavaScript (ES6+)</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Tailwind / Bootstrap</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:88%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>HTML5 / CSS3</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:92%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-	<script async defer src="js/options.js"></script>
-    <script async defer src="js/site.js"></script>
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <h3 data-en="Mobile" data-fr="Mobile">Mobile</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Flutter / Dart</span><span>5 ans</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:82%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 7H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            </svg>
+            <h3 data-en="DevOps & Infra" data-fr="DevOps & Infra">DevOps &amp; Infra</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Docker</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>Linux Server Admin</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span>VPS / SFTP / CI pipelines</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <script>
-    Vue.use(VeeValidate); // good to go.  
-    var app = new Vue({
-        el: "#app",
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            <h3 data-en="Architecture" data-fr="Architecture">Architecture</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span data-en="SaaS Platform Design" data-fr="Conception SaaS">SaaS Platform
+                  Design</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span data-en="Modular Laravel Packages"
+                  data-fr="Packages Laravel modulaires">Modular Laravel Packages</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:88%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top"><span data-en="Agile Team Leadership" data-fr="Leadership Agile">Agile Team
+                  Leadership</span><span></span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="--w:87%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        data() {
-            return {
-                apiBase_url: 'https://api.reussirplus.com/',
-                backgroundLoading:'primary',
-                colorLoading:'#fff',
-                secureicone:'sms',
-                first: true,
-                Loadingcolor: '#f18c21',
-                iti:'', 
-                active:'1',
-                loading:false,  
-                
-                dataForm: {
-                    nom:'',
-                    prenom:'',
-                    email:'',
-                    tel:'',
-                    message:'',
-                    link : window.location.href, 
-                    section:'',
-                    societe:'',
-                    type:'',
-                    zip:'',
-                    subject:'',
-                    body:'',
-                    token:'',
-                    therms:true
-                }, 
-                 
-            };
+        <div class="skill-category glass-card reveal">
+          <div class="skill-cat-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.07 4.93l-1.41 1.41M5.34 17.66l-1.41 1.41M2 12h2M20 12h2M5.34 6.34l1.41 1.41M18.07 17.07l1.41 1.41M12 2v2M12 20v2" />
+            </svg>
+            <h3 data-en="Integrations" data-fr="Intégrations">Integrations</h3>
+          </div>
+          <div class="skill-tags">
+            <span>QuickBooks</span>
+            <span>Nuvei</span>
+            <span>OneSpan</span>
+            <span>Twilio</span>
+            <span>MailJet</span>
+            <span>Stripe</span>
+            <span>WooCommerce</span>
+            <span>Python (AI)</span>
+          </div>
+        </div>
 
-        },
+      </div>
+    </div>
+  </section>
 
-        methods: { 
-            
-            openSubcriptionModal(section,color=null){
-                if(color!=null){
-                    $('#subscriptionBtn').css('background-color',color);
-                    $('#offerLabel').css('color',color);
-                }
-                this.dataForm.section = section
-                $('#offerSubcription').modal('show');
-            },
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="My Journey" data-fr="Mon parcours">My Journey</span>
+        <h2 data-en="Experience" data-fr="Expériences">Experience</h2>
+      </div>
 
-            async validateBeforeSubmit(section,modalToClose=null) {
-                this.dataForm.section = section
-                this.$validator.validateAll().then((result) => {
-                    if (result) {
-                        this.postData(modalToClose);
-                        return;
-                    }
-                }); 
-            }, 
+      <div class="timeline">
 
-            openLoadingButton() {
-                console.log(this.$refs.button.$el)
-                const loading = this.$vs.loading({
-                    target: this.$refs.button,
-                    scale: '0.6',
-                    background: 'primary',
-                    opacity: 1,
-                    color: '#fff'
-                })
-                setTimeout(() => {
-                    loading.close()
-                }, 3000)
-                },
+        <!-- Latactik -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Senior Full-Stack Developer" data-fr="Développeur Full-Stack Senior">Senior Full-Stack
+                  Developer</h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>Latactik Agency — Canada (Remote)</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge" data-en="Jul 2024 — Present" data-fr="Juil 2024 — Actuel">Jul 2024 —
+                  Present</span>
+                <span class="current-badge" data-en="Current" data-fr="Actuel">Current</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li
+                data-en="Designed and developed modular SaaS packages (ElixioConnect) deployed across multiple enterprise platforms."
+                data-fr="Conception de modules SaaS réutilisables (ElixioConnect) déployés sur plusieurs plateformes.">
+                Designed and developed modular SaaS packages (ElixioConnect) deployed across multiple enterprise
+                platforms.</li>
+              <li
+                data-en="Led backend integrations: QuickBooks, Nuvei payment gateway, OneSpan e-signature, and National Bank of Canada DPA/PPA file processing via SFTP."
+                data-fr="Intégrations backend : QuickBooks, Nuvei, OneSpan, et traitements DPA/PPA avec la Banque Nationale du Canada par SFTP.">
+                Led backend integrations: QuickBooks, Nuvei payment gateway, OneSpan e-signature, and National Bank of
+                Canada DPA/PPA file processing via SFTP.</li>
+              <li
+                data-en="Contributed to GovPT — a Québec municipal tax-sale platform — and Kampwise, a camping management platform."
+                data-fr="Contribué à GovPT (ventes de taxes municipales au Québec) et Kampwise (gestion de terrains de camping).">
+                Contributed to GovPT — a Québec municipal tax-sale platform — and Kampwise, a camping management
+                platform.</li>
+              <li data-en="Improved platform performance and scalability through modular Laravel architecture."
+                data-fr="Amélioration des performances via une architecture Laravel modulaire.">Improved platform
+                performance and scalability through modular Laravel architecture.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Laravel</span><span>Vue.js</span><span>MySQL</span><span>Docker</span><span>Python</span><span>REST
+                APIs</span>
+            </div>
+          </div>
+        </div>
 
-                openLoading() {
-                    const loading = this.$vs.loading({
-                        target: this.$refs.contact_me,
-                        color: '#E83B35'
-                    })
-                    setTimeout(() => {
-                        loading.close()
-                    }, 3000)
-                },
+        <!-- Observia -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Full-Stack Developer" data-fr="Développeur Full-Stack">Full-Stack Developer</h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>Observia Group — France (Remote)</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge">Nov 2023 — Aug 2024</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li
+                data-en="Developed e-health digital platforms for patient engagement and treatment adherence (Novartis PRO, NOA)."
+                data-fr="Développement de plateformes e-santé pour le suivi patient et l'adhérence aux traitements (Novartis PRO, NOA).">
+                Developed e-health digital platforms for patient engagement and treatment adherence (Novartis PRO, NOA).
+              </li>
+              <li data-en="Delivered secure healthcare-oriented web applications for major pharmaceutical stakeholders."
+                data-fr="Applications web sécurisées pour des acteurs majeurs de l'industrie pharmaceutique.">Delivered
+                secure healthcare-oriented web applications for major pharmaceutical stakeholders.</li>
+              <li data-en="Implemented responsive front-end interfaces and optimized backend performance."
+                data-fr="Interfaces frontend responsives et optimisation des performances backend.">Implemented
+                responsive front-end interfaces and optimized backend performance.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Laravel</span><span>Vue.js</span><span>Docker</span><span>Tailwind</span><span>MySQL</span>
+            </div>
+          </div>
+        </div>
 
+        <!-- ITVOG -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Lead Full-Stack Developer" data-fr="Lead Développeur Full-Stack">Lead Full-Stack Developer
+                </h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>ITVOG — Togo</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge">Aug 2019 — Jul 2024</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li
+                data-en="Led an Agile team of 7 developers — defined architecture standards and code quality processes."
+                data-fr="Direction d'une équipe Agile de 7 développeurs — standards d'architecture et processus qualité.">
+                Led an Agile team of 7 developers — defined architecture standards and code quality processes.</li>
+              <li
+                data-en="Delivered 30+ web platforms and SaaS systems, including TALKAG.COM (social network) and marketplace applications."
+                data-fr="Livraison de 30+ plateformes web et SaaS, dont TALKAG.COM (réseau social) et des marketplaces.">
+                Delivered 30+ web platforms and SaaS systems, including TALKAG.COM (social network) and marketplace
+                applications.</li>
+              <li data-en="Managed Linux production servers and deployment pipelines."
+                data-fr="Administration des serveurs de production Linux et pipelines de déploiement.">Managed Linux
+                production servers and deployment pipelines.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Laravel</span><span>Slim</span><span>Vue.js</span><span>WordPress</span><span>MySQL</span><span>Swagger</span>
+            </div>
+          </div>
+        </div>
 
+        <!-- ARM Mauritius -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Full-Stack Developer (Part-time Remote)" data-fr="Développeur Full-Stack (Remote)">
+                  Full-Stack Developer (Part-time Remote)</h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>ARM Mauritius — Mauritius (Remote)</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge">Nov 2019 — Sep 2020</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li data-en="Built and maintained 12+ corporate and e-commerce websites (WordPress/WooCommerce)."
+                data-fr="Création et maintenance de 12+ sites corporate et e-commerce (WordPress/WooCommerce).">Built
+                and maintained 12+ corporate and e-commerce websites (WordPress/WooCommerce).</li>
+              <li data-en="SEO analysis, Google Ads &amp; Facebook Ads campaigns, and VPS server administration."
+                data-fr="Analyse SEO, campagnes Google/Facebook Ads, administration VPS.">SEO analysis, Google Ads &amp;
+                Facebook Ads campaigns, and VPS server administration.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>PHP</span><span>Vue.js</span><span>WordPress</span><span>MySQL</span><span>Twilio</span>
+            </div>
+          </div>
+        </div>
 
-            async postData(modalToClose=null) {
-                const loading = this.$vs.loading({
-                    target: this.$refs.contact_me,
-                    color: '#E83B35'
-                }) 
-                axios.post(this.apiBase_url,this.dataForm)
-                .then(response =>{ 
-                    if(response.data.success){
-                     
-                        this.dataForm.nom='';
-                        this.dataForm.prenom='';
-                        this.dataForm.email='';
-                        this.dataForm.tel='';
-                        this.dataForm.message='';   
-                        this.dataForm.zip='';
-                        this.dataForm.subject=''; 
-                        this.errors.clear();
-                        this.$validator.reset();
+        <!-- Unicom -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Creative Lead &amp; Web Developer" data-fr="Chef Créatif &amp; Développeur Web">Creative
+                  Lead &amp; Web Developer</h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>Unicom Africa — Togo</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge">Mar 2016 — Mar 2019</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li data-en="Supervised multidisciplinary digital production teams (3 developers, 2 graphic designers)."
+                data-fr="Supervision d'équipes digitales multidisciplinaires (3 développeurs, 2 infographistes).">
+                Supervised multidisciplinary digital production teams (3 developers, 2 graphic designers).</li>
+              <li data-en="Delivered 11+ web platforms and large-scale communication projects."
+                data-fr="Livraison de 11+ plateformes web et projets de communication à grande échelle.">Delivered 11+
+                web platforms and large-scale communication projects.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>PHP</span><span>WordPress</span><span>JavaScript</span><span>Adobe CC</span>
+            </div>
+          </div>
+        </div>
 
-                    this.openNotification('top-right', 'success', `<i class='fa fa-check-circle' ></i>`);  
-                    }else{
-                    this.openerrorNotification('top-right', 'danger', `<i class='fa fa-exclamation-triangle' ></i>`);  
-                    } 
-                        if(modalToClose!=null){
-                            $('#'+modalToClose).modal('hide');
-                        }
-                    loading.close(); 
-                })
-                .catch(function(error){
-                    console.log(error);
-                    loading.close(); 
-                }); 
-            },  
+        <!-- Togo Assistance -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 data-en="Application Developer" data-fr="Développeur d'Applications">Application Developer</h3>
+                <div class="timeline-company">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  </svg>
+                  <span>Togo Assistance — Togo</span>
+                </div>
+              </div>
+              <div class="timeline-period">
+                <span class="period-badge">Apr 2014 — Feb 2016</span>
+              </div>
+            </div>
+            <ul class="timeline-list">
+              <li
+                data-en="Developed a comprehensive internal management system improving operational efficiency by 90%."
+                data-fr="Développement d'un système de gestion interne améliorant la productivité de 90%.">Developed a
+                comprehensive internal management system improving operational efficiency by 90%.</li>
+              <li data-en="Full software lifecycle: requirements gathering → design → development → deployment."
+                data-fr="Cycle complet : collecte des besoins → conception → développement → déploiement.">Full software
+                lifecycle: requirements gathering → design → development → deployment.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Java Swing</span><span>PHP</span><span>Laravel</span><span>HTML/CSS</span>
+            </div>
+          </div>
+        </div>
 
-            openNotification(position = null, color, icon) {
-                const noti = this.$vs.notification({
-                    progress: 'auto',
-                    icon,
-                    color,
-                    position,
-                    title: 'Message envoyé !',
-                    text: `Merci pour votre message ! Je vous reviens dans les meilleurs délais.`
-                })
-            },
-           
-           
-            openerrorNotification(position = null, color, icon) {
-                const noti = this.$vs.notification({
-                    progress: 'auto',
-                    icon,
-                    color,
-                    position,
-                    title: "Oops ! une erreur s'est produite",
-                    text: `Votre demande n'a pas été traitée ! Je vous prie de bien vouloir réessayer.`
-                })
-            },
+      </div>
+    </div>
+  </section>
 
-        },
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Featured Work" data-fr="Projets notables">Featured Work</span>
+        <h2 data-en="Projects" data-fr="Projets">Projects</h2>
+      </div>
+      <div class="projects-grid">
 
-    }); 
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <h3>ElixioConnect</h3>
+          <p data-en="Modular SaaS package ecosystem: QuickBooks sync, Nuvei payments, OneSpan e-signatures, National Bank DPA/PPA banking workflows, electronic wallet, and delivery integrations."
+            data-fr="Écosystème de packages SaaS modulaires : synchronisation QuickBooks, paiements Nuvei, signatures OneSpan, workflows bancaires DPA/PPA avec la BNC, portefeuille électronique.">
+            Modular SaaS package ecosystem: QuickBooks sync, Nuvei payments, OneSpan e-signatures, National Bank DPA/PPA
+            banking workflows, electronic wallet, and delivery integrations.</p>
+          <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>Docker</span><span>MySQL</span></div>
+          <a href="https://elixiosoft.com/" target="_blank" rel="noopener" class="project-link">
+            <span data-en="View Platform" data-fr="Voir la plateforme">View Platform</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
 
-</script>
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <h3>GovPT</h3>
+          <p data-en="Quebec-based municipal tax-sale platform. High-volume platform serving municipalities for managing property tax sales and financial compliance."
+            data-fr="Plateforme québécoise de vente pour taxes municipales. Système haute volumétrie pour la conformité financière et la gestion des ventes de propriétés.">
+            Quebec-based municipal tax-sale platform. High-volume platform serving municipalities for managing property
+            tax sales and financial compliance.</p>
+          <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>MySQL</span><span>Docker</span></div>
+          <a href="https://www.govpt.ca/" target="_blank" rel="noopener" class="project-link">
+            <span data-en="View Platform" data-fr="Voir la plateforme">View Platform</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
 
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+          </div>
+          <h3>Observia E-Health</h3>
+          <p data-en="Patient engagement and treatment adherence platforms for the pharmaceutical industry. Included Novartis PRO and NOA healthcare programs."
+            data-fr="Plateformes d'engagement patient et d'adhérence aux traitements pour l'industrie pharmaceutique. Programmes Novartis PRO et NOA.">
+            Patient engagement and treatment adherence platforms for the pharmaceutical industry. Included Novartis PRO
+            and NOA healthcare programs.</p>
+          <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>Tailwind</span><span>Docker</span>
+          </div>
+          <a href="https://observia-group.com/" target="_blank" rel="noopener" class="project-link">
+            <span data-en="View Company" data-fr="Voir l'entreprise">View Company</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
 
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3>TALKAG.COM</h3>
+          <p data-en="Full social network platform built and led at ITVOG. One of 32+ platforms delivered during the ITVOG era."
+            data-fr="Réseau social complet conçu et dirigé chez ITVOG. L'un des 32+ projets livrés pendant la période ITVOG.">
+            Full social network platform built and led at ITVOG. One of 32+ platforms delivered during the ITVOG era.
+          </p>
+          <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>Slim</span><span>MySQL</span></div>
+        </div>
 
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <h3>Kampwise</h3>
+          <p data-en="Camping site management platform for Quebec. Comprehensive SaaS solution for campground operators with booking and operations management."
+            data-fr="Plateforme de gestion de terrains de camping au Québec. Solution SaaS complète pour les opérateurs de campings.">
+            Camping site management platform for Quebec. Comprehensive SaaS solution for campground operators with
+            booking and operations management.</p>
+          <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>MySQL</span></div>
+        </div>
+
+        <div class="project-card glass-card reveal">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+          </div>
+          <h3 data-en="ARM Mauritius — Digital Ecosystem" data-fr="ARM Mauritius — Écosystème Digital">ARM Mauritius —
+            Digital Ecosystem</h3>
+          <p data-en="Built 12+ corporate and e-commerce websites with SEO optimization, marketing automation, and VPS infrastructure management."
+            data-fr="Création de 12+ sites corporate et e-commerce avec optimisation SEO, automation marketing et administration VPS.">
+            Built 12+ corporate and e-commerce websites with SEO optimization, marketing automation, and VPS
+            infrastructure management.</p>
+          <div class="project-tags"><span>WordPress</span><span>PHP</span><span>Vue.js</span><span>Twilio</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Academic Background" data-fr="Parcours académique">Academic Background</span>
+        <h2 data-en="Education" data-fr="Formation">Education</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card glass-card reveal">
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div class="edu-content">
+            <h3 data-en="Bachelor's Degree — Software Engineering" data-fr="Licence Professionnelle — Génie Logiciel">
+              Bachelor's Degree — Software Engineering</h3>
+            <p class="edu-school">DEFITECH University — Lomé, Togo</p>
+            <p class="edu-year">2013 — 2014</p>
+          </div>
+        </div>
+        <div class="edu-card glass-card reveal">
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div class="edu-content">
+            <h3 data-en="Higher National Diploma — Application Development" data-fr="BTS — Développeur d'Applications">
+              Higher National Diploma — Application Development</h3>
+            <p class="edu-school">DEFITECH University — Lomé, Togo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOWNLOAD CV ===== -->
+  <section id="cv-download" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Get My Resume" data-fr="Mon CV">Get My Resume</span>
+        <h2 data-en="Download CV" data-fr="Télécharger mon CV">Download CV</h2>
+      </div>
+      <div class="cv-download-grid">
+        <a href="CV/cv-awaki-tchalim-en-2026.pdf" download class="cv-card glass-card reveal">
+          <div class="cv-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="cv-card-content">
+            <h3>English Version</h3>
+            <p>Full-Stack Software Engineer — 2026</p>
+          </div>
+          <div class="cv-card-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>PDF</span>
+          </div>
+        </a>
+        <a href="CV/cv-awaki-tchalim-fr-2026.pdf" download class="cv-card glass-card reveal">
+          <div class="cv-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="cv-card-content">
+            <h3>Version Française</h3>
+            <p>Ingénieur Full-Stack Senior — 2026</p>
+          </div>
+          <div class="cv-card-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>PDF</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Let's Work Together" data-fr="Travaillons ensemble">Let's Work
+          Together</span>
+        <h2 data-en="Get in Touch" data-fr="Me contacter">Get in Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro"
+            data-en="Available for remote international opportunities and open to relocation with visa sponsorship."
+            data-fr="Disponible pour des opportunités internationales en remote et ouvert à la relocation avec sponsor visa.">
+            Available for remote international opportunities and open to relocation with visa sponsorship.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:awaki@tchalim.dev" class="contact-link glass-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div>
+                <span class="contact-link-label">Email</span>
+                <span class="contact-link-val">awaki@tchalim.dev</span>
+              </div>
+            </a>
+            <a href="tel:+22891412505" class="contact-link glass-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.4 19.79 19.79 0 0 1 1.6 4.81 2 2 0 0 1 3.6 2.6h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <div>
+                <span class="contact-link-label">Phone</span>
+                <span class="contact-link-val">+228 91 41 25 05</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/awaki-tchalim/" target="_blank" rel="noopener"
+              class="contact-link glass-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              <div>
+                <span class="contact-link-label">LinkedIn</span>
+                <span class="contact-link-val">awaki-tchalim</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form glass-card" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="cf-name" data-en="Your Name" data-fr="Votre nom">Your Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" data-placeholder-en="John Doe"
+              data-placeholder-fr="Jean Dupont" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="cf-email" data-en="Email Address" data-fr="Adresse email">Email Address</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email"
+              placeholder="hello@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="cf-subject" data-en="Subject" data-fr="Objet">Subject</label>
+            <input type="text" id="cf-subject" name="subject" data-placeholder-en="Project opportunity"
+              data-placeholder-fr="Opportunité de projet" placeholder="Project opportunity" />
+          </div>
+          <div class="form-group">
+            <label for="cf-message" data-en="Message" data-fr="Message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" required
+              data-placeholder-en="Tell me about your project..." data-placeholder-fr="Parlez-moi de votre projet...">
+          </textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full" id="formSubmitBtn">
+            <span data-en="Send Message" data-fr="Envoyer">Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+          <div id="formMsg" class="form-msg" style="display:none"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-at">AT</span>
+          <span>Awaki Tchalim</span>
+        </div>
+        <p class="footer-copy" data-en="Built with passion — All rights reserved &copy; 2025 Awaki Tchalim"
+          data-fr="Conçu avec passion — Tous droits réservés &copy; 2025 Awaki Tchalim">
+          Built with passion — All rights reserved &copy; 2025 Awaki Tchalim
+        </p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/awaki-tchalim/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="mailto:awaki@tchalim.dev" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
+
 </html>

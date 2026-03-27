@@ -1,5 +1,0 @@
-# Allow All
-User-agent: *
-Allow: /
-
-Sitemap: https://awaki-tchalim.github.io/sitemap.xml
