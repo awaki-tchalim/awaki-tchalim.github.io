@@ -9,16 +9,79 @@
     content="Senior Full-Stack Software Engineer with 10+ years of experience. Expert in Laravel, Vue.js, Docker, REST APIs. Available for remote international opportunities." />
   <meta name="keywords"
     content="Awaki Tchalim, Full-Stack Developer, Laravel, Vue.js, PHP, Docker, SaaS, Togo, Remote Developer" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Awaki Tchalim — Senior Full-Stack Engineer" />
   <meta property="og:description" content="10+ years building scalable SaaS platforms & enterprise web apps." />
   <meta property="og:url" content="https://awaki.tchalim.dev" />
+  <meta property="og:image" content="https://awaki.tchalim.dev/assets/awaki-tchalim.jpg" />
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="600" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:site_name" content="Awaki Tchalim — Portfolio" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Awaki Tchalim — Senior Full-Stack Engineer" />
+  <meta name="twitter:description" content="10+ years building scalable SaaS platforms & enterprise web apps." />
+  <meta name="twitter:image" content="https://awaki.tchalim.dev/assets/awaki-tchalim.jpg" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://awaki.tchalim.dev/" />
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- Fonts: preload critical weight then load full stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+  </noscript>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://www.google.com/recaptcha/api.js?render=6LexYpksAAAAAHWYz41fg60p20yzY6bqvK6AxEjF"></script>
+  <!-- reCAPTCHA: lazy-loaded when contact section enters viewport (see app.js) -->
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Awaki Tchalim — Portfolio",
+        "url": "https://awaki.tchalim.dev",
+        "inLanguage": ["en", "fr"]
+      },
+      {
+        "@type": "Person",
+        "name": "Awaki Tchalim",
+        "url": "https://awaki.tchalim.dev",
+        "image": "https://awaki.tchalim.dev/assets/awaki-tchalim.jpg",
+        "jobTitle": "Senior Full-Stack Software Engineer",
+        "email": "awaki@tchalim.dev",
+        "sameAs": [
+          "https://www.linkedin.com/in/awaki-tchalim/"
+        ],
+        "knowsAbout": ["Laravel", "Vue.js", "PHP", "Docker", "REST API", "Flutter", "SaaS", "PostgreSQL", "MySQL"],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "ARM Ltd (Mauritius)"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "IAI Togo"
+        },
+        "nationality": {
+          "@type": "Country",
+          "name": "Togo"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>

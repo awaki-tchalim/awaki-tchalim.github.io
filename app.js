@@ -345,7 +345,24 @@
   }
 
   /* =========================================
-     10. CONTACT FORM (AJAX + reCAPTCHA)
+     10. LAZY-LOAD reCAPTCHA (when contact section enters viewport)
+     ========================================= */
+  (function lazyRecaptcha() {
+    const contactSection = document.getElementById('contact');
+    if (!contactSection || typeof IntersectionObserver === 'undefined') return;
+    const obs = new IntersectionObserver((entries, observer) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+        const s = document.createElement('script');
+        s.src = 'https://www.google.com/recaptcha/api.js?render=6LexYpksAAAAAHWYz41fg60p20yzY6bqvK6AxEjF';
+        document.head.appendChild(s);
+      }
+    }, { rootMargin: '200px' });
+    obs.observe(contactSection);
+  })();
+
+  /* =========================================
+     11. CONTACT FORM (AJAX + reCAPTCHA)
      ========================================= */
   const form     = document.getElementById('contactForm');
   const formMsg  = document.getElementById('formMsg');

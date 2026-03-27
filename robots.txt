@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/cv/
+
+Sitemap: https://awaki.tchalim.dev/sitemap.xml
