@@ -5605,7 +5605,8 @@ body {
 }
 
 .skn-mlf5.fontsize {
-    font-size: 11px
+    font-size: 12px;
+    line-height: 14px
 }
 
 .skn-mlf5.fontface {
@@ -6118,4 +6119,13 @@ body,
     height: 5px;
     width: 5px;
     z-index: 2;
+}
+
+li.tech {
+    margin-top: 10px !important;
+}
+
+li.tech:before {
+    content: '';
+    color: #ffffff !important;
 }
